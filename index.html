@@ -4,712 +4,460 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RWAgallery.art — RWA Art Protocol on Kusama</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-/* ====== RESET & BASE ====== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --az: #00aaff;
-  --az2: #0066cc;
-  --az3: #003388;
-  --vi: #bb00ff;
-  --vi2: #880099;
-  --vi3: #440055;
-  --ro: #ff0099;
-  --ro2: #cc0066;
-  --ro3: #660033;
-  --bg: #020510;
-  --bg2: #030a18;
-  --bg3: #050515;
-  --border: #0a1a3a;
-  --text: #4ab8ff;
-  --text2: #1a4a88;
-  --text3: #0a1a4a;
-  --mono: 'Share Tech Mono', monospace;
-  --display: 'Orbitron', monospace;
-  --body: 'Exo 2', sans-serif;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --az:#00aaff;--az2:#0066cc;--az3:#003388;
+  --vi:#bb00ff;--vi2:#880099;--vi3:#440055;
+  --ro:#ff0099;--ro2:#cc0066;--ro3:#660033;
+  --bg:#020510;--bg2:#030a18;--bg3:#050515;
+  --border:#0a1a3a;--text:#4ab8ff;--text2:#1a4a88;--text3:#0a1a4a;
+  --mono:'Share Tech Mono',monospace;
+  --display:'Orbitron',monospace;
+  --body:'Exo 2',sans-serif;
 }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--body);
-  font-size: 15px;
-  line-height: 1.7;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.7;overflow-x:hidden}
+@keyframes scan{0%{top:-4px}100%{top:100vh}}
+@keyframes blink{0%,89%,100%{opacity:1}90%,95%{opacity:0}}
+@keyframes flicker{0%,100%{opacity:1}91%{opacity:.8}93%{opacity:1}97%{opacity:.5}98%{opacity:1}}
+@keyframes pulse-az{0%,100%{box-shadow:0 0 8px var(--az),0 0 20px rgba(0,170,255,.2)}50%{box-shadow:0 0 16px var(--az),0 0 40px rgba(0,170,255,.4)}}
+@keyframes pulse-vi{0%,100%{box-shadow:0 0 8px var(--vi),0 0 20px rgba(187,0,255,.2)}50%{box-shadow:0 0 16px var(--vi),0 0 40px rgba(187,0,255,.4)}}
+@keyframes pulse-ro{0%,100%{box-shadow:0 0 8px var(--ro),0 0 20px rgba(255,0,153,.2)}50%{box-shadow:0 0 16px var(--ro),0 0 40px rgba(255,0,153,.4)}}
+@keyframes rgb-shift{0%{text-shadow:0 0 20px var(--az),0 0 60px rgba(0,170,255,.4)}33%{text-shadow:0 0 20px var(--vi),0 0 60px rgba(187,0,255,.4)}66%{text-shadow:0 0 20px var(--ro),0 0 60px rgba(255,0,153,.4)}100%{text-shadow:0 0 20px var(--az),0 0 60px rgba(0,170,255,.4)}}
+@keyframes glitch{0%,100%{clip-path:inset(0);transform:translateX(0)}92%{clip-path:inset(2px 0 0 0);transform:translateX(3px)}94%{clip-path:inset(0);transform:translateX(0)}96%{clip-path:inset(0 0 4px 0);transform:translateX(-3px)}98%{clip-path:inset(0);transform:translateX(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes grid-pulse{0%,100%{opacity:.03}50%{opacity:.07}}
+@keyframes bar-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-/* ====== ANIMATIONS ====== */
-@keyframes scan { 0%{top:-4px} 100%{top:100vh} }
-@keyframes blink { 0%,89%,100%{opacity:1} 90%,95%{opacity:0} }
-@keyframes flicker { 0%,100%{opacity:1} 91%{opacity:0.8} 93%{opacity:1} 97%{opacity:0.5} 98%{opacity:1} }
-@keyframes pulse-az { 0%,100%{box-shadow:0 0 8px var(--az),0 0 20px rgba(0,170,255,0.2)} 50%{box-shadow:0 0 16px var(--az),0 0 40px rgba(0,170,255,0.4)} }
-@keyframes pulse-vi { 0%,100%{box-shadow:0 0 8px var(--vi),0 0 20px rgba(187,0,255,0.2)} 50%{box-shadow:0 0 16px var(--vi),0 0 40px rgba(187,0,255,0.4)} }
-@keyframes pulse-ro { 0%,100%{box-shadow:0 0 8px var(--ro),0 0 20px rgba(255,0,153,0.2)} 50%{box-shadow:0 0 16px var(--ro),0 0 40px rgba(255,0,153,0.4)} }
-@keyframes rgb-shift {
-  0%{text-shadow:0 0 20px var(--az),0 0 60px rgba(0,170,255,0.4)}
-  33%{text-shadow:0 0 20px var(--vi),0 0 60px rgba(187,0,255,0.4)}
-  66%{text-shadow:0 0 20px var(--ro),0 0 60px rgba(255,0,153,0.4)}
-  100%{text-shadow:0 0 20px var(--az),0 0 60px rgba(0,170,255,0.4)}
-}
-@keyframes glitch {
-  0%,100%{clip-path:inset(0);transform:translateX(0)}
-  92%{clip-path:inset(2px 0 0 0);transform:translateX(3px)}
-  94%{clip-path:inset(0);transform:translateX(0)}
-  96%{clip-path:inset(0 0 4px 0);transform:translateX(-3px)}
-  98%{clip-path:inset(0);transform:translateX(0)}
-}
-@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-@keyframes draw-line { from{width:0} to{width:100%} }
-@keyframes bar-grow { from{width:0} to{width:var(--w)} }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes grid-pulse { 0%,100%{opacity:0.03} 50%{opacity:0.07} }
+.scanline{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(transparent,rgba(0,180,255,.07),transparent);animation:scan 8s linear infinite;pointer-events:none;z-index:999}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;animation:grid-pulse 6s ease-in-out infinite;pointer-events:none;z-index:0}
 
-/* ====== SCANLINE ====== */
-.scanline {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(transparent, rgba(0,180,255,0.07), transparent);
-  animation: scan 8s linear infinite;
-  pointer-events: none;
-  z-index: 999;
-}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,5,16,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;letter-spacing:2px;text-decoration:none}
+.nav-logo span{color:var(--az)}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--az)}
+.lang-btn{font-family:var(--mono);font-size:10px;letter-spacing:2px;padding:5px 14px;border:1px solid var(--az3);border-radius:2px;background:rgba(0,100,255,.06);color:var(--az);cursor:pointer;transition:all .2s}
+.lang-btn:hover{background:rgba(0,170,255,.15);border-color:var(--az)}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--az);box-shadow:0 0 6px var(--az);animation:pulse-az 2s infinite}
 
-/* ====== GRID BG ====== */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: grid-pulse 6s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
-}
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--az3),var(--vi3),transparent)}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:4px;color:var(--az2);margin-bottom:24px;animation:fadeInUp .8s ease both}
+.hero-title{font-family:var(--display);font-size:clamp(48px,10vw,96px);font-weight:900;line-height:.95;margin-bottom:20px;animation:glitch 10s ease-in-out infinite,fadeInUp .8s ease .2s both}
+.hero-title .az{color:var(--az);animation:rgb-shift 8s ease-in-out infinite}
+.hero-title .vi{color:var(--vi);text-shadow:0 0 15px rgba(187,0,255,.5)}
+.hero-title .ro{color:var(--ro);text-shadow:0 0 15px rgba(255,0,153,.5)}
+.hero-sub{font-family:var(--mono);font-size:11px;letter-spacing:3px;color:var(--text2);margin-bottom:40px;animation:fadeInUp .8s ease .4s both}
+.hero-sub span{color:var(--az2)}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:48px;animation:fadeInUp .8s ease .6s both}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:2px;padding:5px 14px;border-radius:2px;border:1px solid}
+.tag-az{color:var(--az);border-color:var(--az3);background:rgba(0,100,255,.06);animation:pulse-az 3s infinite}
+.tag-vi{color:var(--vi);border-color:var(--vi3);background:rgba(150,0,255,.06);animation:pulse-vi 3.5s infinite .5s}
+.tag-ro{color:var(--ro);border-color:var(--ro3);background:rgba(255,0,120,.06);animation:pulse-ro 2.8s infinite 1s}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:fadeInUp .8s ease .8s both}
+.btn{font-family:var(--mono);font-size:11px;letter-spacing:3px;padding:14px 32px;border:1px solid;border-radius:2px;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-az{color:var(--az);border-color:var(--az3);background:rgba(0,100,255,.06)}
+.btn-az:hover{background:rgba(0,170,255,.15);box-shadow:0 0 20px rgba(0,170,255,.2);border-color:var(--az)}
+.btn-vi{color:var(--vi);border-color:var(--vi3);background:rgba(150,0,255,.06)}
+.btn-vi:hover{background:rgba(187,0,255,.15);box-shadow:0 0 20px rgba(187,0,255,.2);border-color:var(--vi)}
 
-/* ====== NAV ====== */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(2,5,16,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-}
-.nav-logo {
-  font-family: var(--display);
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 2px;
-  text-decoration: none;
-}
-.nav-logo span { color: var(--az); }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--text2);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--az); }
-.nav-status {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--text3);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.dot-live { width:6px; height:6px; border-radius:50%; background:var(--az); box-shadow:0 0 6px var(--az); animation: pulse-az 2s infinite; }
+/* SECTIONS */
+section{position:relative;z-index:1;padding:90px 40px;max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--text3);margin-bottom:12px}
+.section-title{font-family:var(--display);font-size:clamp(24px,4vw,40px);font-weight:700;color:#fff;margin-bottom:40px;line-height:1.1}
+.section-title .az{color:var(--az)}
+.section-title .vi{color:var(--vi)}
+.section-title .ro{color:var(--ro)}
+.section-divider{height:1px;background:linear-gradient(90deg,var(--az3),var(--vi3),var(--ro3),transparent);margin-bottom:48px}
 
-/* ====== HERO ====== */
-.hero {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 40px 80px;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--az3), var(--vi3), transparent);
-}
-.hero-eyebrow {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 5px;
-  color: var(--az2);
-  margin-bottom: 24px;
-  animation: fadeInUp 0.8s ease both;
-}
-.hero-title {
-  font-family: var(--display);
-  font-size: clamp(52px, 10vw, 100px);
-  font-weight: 900;
-  line-height: 0.95;
-  margin-bottom: 20px;
-  animation: glitch 10s ease-in-out infinite, fadeInUp 0.8s ease 0.2s both;
-}
-.hero-title .az { color: var(--az); animation: rgb-shift 8s ease-in-out infinite; }
-.hero-title .vi { color: var(--vi); text-shadow: 0 0 15px rgba(187,0,255,0.5); }
-.hero-title .ro { color: var(--ro); text-shadow: 0 0 15px rgba(255,0,153,0.5); }
-.hero-sub {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: var(--text2);
-  margin-bottom: 48px;
-  animation: fadeInUp 0.8s ease 0.4s both;
-}
-.hero-sub span { color: var(--az2); }
-.hero-tags {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 56px;
-  animation: fadeInUp 0.8s ease 0.6s both;
-}
-.tag {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 2px;
-  padding: 5px 14px;
-  border-radius: 2px;
-  border: 1px solid;
-}
-.tag-az { color: var(--az); border-color: var(--az3); background: rgba(0,100,255,0.06); animation: pulse-az 3s infinite; }
-.tag-vi { color: var(--vi); border-color: var(--vi3); background: rgba(150,0,255,0.06); animation: pulse-vi 3.5s infinite 0.5s; }
-.tag-ro { color: var(--ro); border-color: var(--ro3); background: rgba(255,0,120,0.06); animation: pulse-ro 2.8s infinite 1s; }
-.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 0.8s ease 0.8s both; }
-.btn {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 3px;
-  padding: 14px 32px;
-  border: 1px solid;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-.btn-az { color: var(--az); border-color: var(--az3); background: rgba(0,100,255,0.06); }
-.btn-az:hover { background: rgba(0,170,255,0.15); box-shadow: 0 0 20px rgba(0,170,255,0.2); border-color: var(--az); }
-.btn-vi { color: var(--vi); border-color: var(--vi3); background: rgba(150,0,255,0.06); }
-.btn-vi:hover { background: rgba(187,0,255,0.15); box-shadow: 0 0 20px rgba(187,0,255,0.2); border-color: var(--vi); }
+/* STATS */
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:60px}
+.stat{background:var(--bg2);padding:20px 24px;display:flex;flex-direction:column;gap:4px}
+.stat-lab{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--text3)}
+.stat-val{font-family:var(--display);font-size:24px;font-weight:700;line-height:1}
+.stat-val.az{color:var(--az);text-shadow:0 0 10px rgba(0,170,255,.4)}
+.stat-val.vi{color:var(--vi);text-shadow:0 0 10px rgba(187,0,255,.4)}
+.stat-val.ro{color:var(--ro);text-shadow:0 0 10px rgba(255,0,153,.4)}
+.stat-sub{font-family:var(--mono);font-size:8px;color:var(--text3)}
 
-/* ====== SECTION BASE ====== */
-section { position: relative; z-index: 1; padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-.section-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 4px;
-  color: var(--text3);
-  margin-bottom: 16px;
-}
-.section-title {
-  font-family: var(--display);
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 48px;
-  line-height: 1.1;
-}
-.section-title span.az { color: var(--az); }
-.section-title span.vi { color: var(--vi); }
-.section-title span.ro { color: var(--ro); }
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, var(--az3), var(--vi3), var(--ro3), transparent);
-  margin-bottom: 64px;
-}
+/* FLOW */
+.flow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.flow-step{background:var(--bg2);padding:24px;display:flex;flex-direction:column;gap:10px;transition:background .2s}
+.flow-step:hover{background:rgba(0,50,180,.08)}
+.flow-num{font-family:var(--display);font-size:28px;font-weight:900;line-height:1;opacity:.15}
+.flow-step:nth-child(1) .flow-num,.flow-step:nth-child(2) .flow-num{color:var(--az)}
+.flow-step:nth-child(3) .flow-num,.flow-step:nth-child(4) .flow-num{color:var(--vi)}
+.flow-step:nth-child(5) .flow-num,.flow-step:nth-child(6) .flow-num{color:var(--ro)}
+.flow-title{font-family:var(--body);font-size:13px;font-weight:600;color:#cce6ff}
+.flow-desc{font-family:var(--body);font-size:12px;color:var(--text2);line-height:1.6}
 
-/* ====== STATS BAR ====== */
-.stats-bar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 80px;
-}
-.stat {
-  background: var(--bg2);
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.stat-lab { font-family: var(--mono); font-size: 8px; letter-spacing: 3px; color: var(--text3); }
-.stat-val { font-family: var(--display); font-size: 26px; font-weight: 700; line-height: 1; }
-.stat-val.az { color: var(--az); text-shadow: 0 0 10px rgba(0,170,255,0.4); }
-.stat-val.vi { color: var(--vi); text-shadow: 0 0 10px rgba(187,0,255,0.4); }
-.stat-val.ro { color: var(--ro); text-shadow: 0 0 10px rgba(255,0,153,0.4); }
-.stat-sub { font-family: var(--mono); font-size: 8px; color: var(--text3); }
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gallery-card{border:1px solid var(--border);border-radius:4px;overflow:hidden;background:var(--bg2);transition:transform .2s,border-color .2s;cursor:pointer}
+.gallery-card:hover{transform:translateY(-4px);border-color:var(--az3)}
+.gallery-card:nth-child(3n+2):hover{border-color:var(--vi3)}
+.gallery-card:nth-child(3n+3):hover{border-color:var(--ro3)}
+.gallery-img{width:100%;aspect-ratio:1;background:var(--bg3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.gallery-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,100,255,.1),rgba(187,0,255,.1),rgba(255,0,153,.1));animation:bar-pulse 3s ease-in-out infinite}
+.gallery-placeholder{font-family:var(--display);font-size:32px;font-weight:900;opacity:.2}
+.gallery-card:nth-child(1) .gallery-placeholder{color:var(--az)}
+.gallery-card:nth-child(2) .gallery-placeholder{color:var(--vi)}
+.gallery-card:nth-child(3) .gallery-placeholder{color:var(--ro)}
+.gallery-card:nth-child(4) .gallery-placeholder{color:var(--az)}
+.gallery-card:nth-child(5) .gallery-placeholder{color:var(--vi)}
+.gallery-card:nth-child(6) .gallery-placeholder{color:var(--ro)}
+.gallery-info{padding:14px 16px}
+.gallery-title{font-family:var(--display);font-size:11px;font-weight:700;color:#cce6ff;margin-bottom:4px}
+.gallery-meta{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px}
+.gallery-note{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text3);text-align:center;margin-top:24px;padding:16px;border:1px dashed var(--border);border-radius:4px}
 
-/* ====== FLOW ====== */
-.flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-.flow-step {
-  background: var(--bg2);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: background 0.2s;
-}
-.flow-step:hover { background: rgba(0,50,180,0.08); }
-.flow-num {
-  font-family: var(--display);
-  font-size: 32px;
-  font-weight: 900;
-  line-height: 1;
-  opacity: 0.15;
-}
-.flow-step:nth-child(1) .flow-num, .flow-step:nth-child(2) .flow-num { color: var(--az); }
-.flow-step:nth-child(3) .flow-num, .flow-step:nth-child(4) .flow-num { color: var(--vi); }
-.flow-step:nth-child(5) .flow-num, .flow-step:nth-child(6) .flow-num { color: var(--ro); }
-.flow-title { font-family: var(--body); font-size: 13px; font-weight: 600; color: #cce6ff; }
-.flow-desc { font-family: var(--body); font-size: 12px; color: var(--text2); line-height: 1.6; }
+/* NEON CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ncard{border:1px solid;border-radius:4px;padding:28px;position:relative;overflow:hidden;transition:transform .2s}
+.ncard:hover{transform:translateY(-4px)}
+.ncard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.ncard.az{border-color:var(--az3);background:rgba(0,50,180,.06)}
+.ncard.az::before{background:linear-gradient(90deg,transparent,var(--az),transparent);animation:pulse-az 3s infinite}
+.ncard.vi{border-color:var(--vi3);background:rgba(120,0,200,.06)}
+.ncard.vi::before{background:linear-gradient(90deg,transparent,var(--vi),transparent);animation:pulse-vi 3.5s infinite .5s}
+.ncard.ro{border-color:var(--ro3);background:rgba(200,0,100,.06)}
+.ncard.ro::before{background:linear-gradient(90deg,transparent,var(--ro),transparent);animation:pulse-ro 2.8s infinite 1s}
+.ncard-label{font-family:var(--mono);font-size:8px;letter-spacing:3px;margin-bottom:10px}
+.ncard.az .ncard-label{color:var(--az2)}
+.ncard.vi .ncard-label{color:var(--vi2)}
+.ncard.ro .ncard-label{color:var(--ro2)}
+.ncard-title{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:10px}
+.ncard.az .ncard-title{color:var(--az)}
+.ncard.vi .ncard-title{color:var(--vi)}
+.ncard.ro .ncard-title{color:var(--ro)}
+.ncard-body{font-family:var(--body);font-size:13px;color:var(--text2);line-height:1.7}
 
-/* ====== NEON CARDS ====== */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-.ncard {
-  border: 1px solid;
-  border-radius: 4px;
-  padding: 28px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-.ncard:hover { transform: translateY(-4px); }
-.ncard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; }
-.ncard.az { border-color: var(--az3); background: rgba(0,50,180,0.06); }
-.ncard.az::before { background: linear-gradient(90deg, transparent, var(--az), transparent); animation: pulse-az 3s infinite; }
-.ncard.vi { border-color: var(--vi3); background: rgba(120,0,200,0.06); }
-.ncard.vi::before { background: linear-gradient(90deg, transparent, var(--vi), transparent); animation: pulse-vi 3.5s infinite 0.5s; }
-.ncard.ro { border-color: var(--ro3); background: rgba(200,0,100,0.06); }
-.ncard.ro::before { background: linear-gradient(90deg, transparent, var(--ro), transparent); animation: pulse-ro 2.8s infinite 1s; }
-.ncard-label { font-family: var(--mono); font-size: 8px; letter-spacing: 3px; margin-bottom: 10px; }
-.ncard.az .ncard-label { color: var(--az2); }
-.ncard.vi .ncard-label { color: var(--vi2); }
-.ncard.ro .ncard-label { color: var(--ro2); }
-.ncard-title { font-family: var(--display); font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-.ncard.az .ncard-title { color: var(--az); }
-.ncard.vi .ncard-title { color: var(--vi); }
-.ncard.ro .ncard-title { color: var(--ro); }
-.ncard-body { font-family: var(--body); font-size: 13px; color: var(--text2); line-height: 1.7; }
+/* WALLET */
+.wallet-section{border:1px solid var(--border);border-radius:4px;background:var(--bg2);padding:40px;text-align:center}
+.wallet-title{font-family:var(--display);font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.wallet-sub{font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:2px;margin-bottom:32px}
+.wallet-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.wallet-btn{font-family:var(--mono);font-size:10px;letter-spacing:2px;padding:12px 24px;border:1px solid var(--az3);border-radius:2px;background:rgba(0,100,255,.06);color:var(--az);cursor:pointer;transition:all .2s}
+.wallet-btn:hover{background:rgba(0,170,255,.15);border-color:var(--az);box-shadow:0 0 16px rgba(0,170,255,.2)}
+.wallet-btn.vi{border-color:var(--vi3);color:var(--vi);background:rgba(150,0,255,.06)}
+.wallet-btn.vi:hover{background:rgba(187,0,255,.15);border-color:var(--vi)}
+.wallet-btn.ro{border-color:var(--ro3);color:var(--ro);background:rgba(255,0,120,.06)}
+.wallet-btn.ro:hover{background:rgba(255,0,153,.15);border-color:var(--ro)}
+.wallet-status{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1px;min-height:20px}
+.wallet-status.connected{color:#00ffaa}
 
-/* ====== BUDGET ====== */
-.budget-rows { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-.brow {
-  display: grid;
-  grid-template-columns: 180px 1fr 80px;
-  align-items: center;
-  gap: 20px;
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--bg3);
-  background: var(--bg2);
-  transition: background 0.2s;
-}
-.brow:last-child { border: none; }
-.brow:hover { background: rgba(0,50,180,0.06); }
-.blab { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; color: var(--text2); }
-.bbar-wrap { height: 2px; background: var(--bg3); border-radius: 1px; }
-.bbar { height: 2px; border-radius: 1px; }
-.bbar.az { background: var(--az); box-shadow: 0 0 6px var(--az); }
-.bbar.vi { background: var(--vi); box-shadow: 0 0 6px var(--vi); }
-.bbar.ro { background: var(--ro); box-shadow: 0 0 6px var(--ro); }
-.bval { font-family: var(--mono); font-size: 11px; color: var(--az); text-align: right; }
-.btotal {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 24px;
-  background: rgba(0,50,180,0.08);
-  border: 1px solid var(--az3);
-  border-radius: 4px;
-  margin-top: 12px;
-}
-.btotal-lab { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; color: var(--text2); }
-.btotal-val { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--az); text-shadow: 0 0 10px rgba(0,170,255,0.4); }
+/* TERMINAL */
+.terminal{background:var(--bg3);border:1px solid var(--border);border-radius:4px;overflow:hidden;font-family:var(--mono)}
+.term-bar{background:rgba(10,26,58,.5);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.term-dot{width:8px;height:8px;border-radius:50%}
+.term-dot.r{background:#ff4444}.term-dot.y{background:#ffaa00}.term-dot.g{background:#00ff88}
+.term-title{font-size:10px;color:var(--text3);letter-spacing:2px;margin-left:8px}
+.term-body{padding:24px}
+.term-line{font-size:12px;line-height:2}
+.term-line .prompt{color:var(--az2)}
+.term-line .cmd{color:var(--az)}
+.term-line .ok{color:#00ffaa}
+.term-line .muted{color:var(--text3)}
+.term-line .hi-vi{color:var(--vi)}
+.term-line .hi-ro{color:var(--ro)}
+.cursor{animation:blink 1.2s step-end infinite}
 
-/* ====== ROADMAP ====== */
-.roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-.rmonth { background: var(--bg2); padding: 28px 22px; }
-.rmonth:hover { background: rgba(0,50,180,0.05); }
-.rm-head { font-family: var(--display); font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-.rmonth:nth-child(1) .rm-head { color: var(--az); }
-.rmonth:nth-child(2) .rm-head { color: #55aaff; }
-.rmonth:nth-child(3) .rm-head { color: var(--vi); }
-.rmonth:nth-child(4) .rm-head { color: var(--ro); }
-.rm-line { height: 1px; margin-bottom: 16px; }
-.rmonth:nth-child(1) .rm-line { background: linear-gradient(90deg, var(--az3), transparent); }
-.rmonth:nth-child(2) .rm-line { background: linear-gradient(90deg, #002244, transparent); }
-.rmonth:nth-child(3) .rm-line { background: linear-gradient(90deg, var(--vi3), transparent); }
-.rmonth:nth-child(4) .rm-line { background: linear-gradient(90deg, var(--ro3), transparent); }
-.ri { font-family: var(--body); font-size: 11px; color: var(--text2); margin-bottom: 8px; padding-left: 10px; border-left: 1px solid var(--border); line-height: 1.5; }
+/* BUDGET */
+.budget-rows{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.brow{display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:20px;padding:14px 24px;border-bottom:1px solid var(--bg3);background:var(--bg2);transition:background .2s}
+.brow:last-child{border:none}
+.brow:hover{background:rgba(0,50,180,.06)}
+.blab{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--text2)}
+.bbar-wrap{height:2px;background:var(--bg3);border-radius:1px}
+.bbar{height:2px;border-radius:1px}
+.bbar.az{background:var(--az);box-shadow:0 0 6px var(--az)}
+.bbar.vi{background:var(--vi);box-shadow:0 0 6px var(--vi)}
+.bbar.ro{background:var(--ro);box-shadow:0 0 6px var(--ro)}
+.bval{font-family:var(--mono);font-size:11px;color:var(--az);text-align:right}
+.btotal{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:rgba(0,50,180,.08);border:1px solid var(--az3);border-radius:4px;margin-top:12px}
+.btotal-lab{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--text2)}
+.btotal-val{font-family:var(--display);font-size:22px;font-weight:700;color:var(--az);text-shadow:0 0 10px rgba(0,170,255,.4)}
 
-/* ====== TEAM ====== */
-.team { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-.tmember {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 32px;
-  background: var(--bg2);
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  transition: border-color 0.2s;
-}
-.tmember:hover { border-color: var(--az3); }
-.tmember:nth-child(2):hover { border-color: var(--vi3); }
-.avatar {
-  width: 52px; height: 52px;
-  border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--display);
-  font-size: 18px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.avatar.az { border: 1px solid var(--az3); color: var(--az); background: rgba(0,100,255,0.08); animation: pulse-az 4s infinite; }
-.avatar.vi { border: 1px solid var(--vi3); color: var(--vi); background: rgba(150,0,255,0.08); animation: pulse-vi 4s infinite 0.5s; }
-.tm-name { font-family: var(--display); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-.tmember:nth-child(1) .tm-name { color: var(--az); }
-.tmember:nth-child(2) .tm-name { color: var(--vi); }
-.tm-role { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; color: var(--text3); margin-bottom: 12px; }
-.tm-bio { font-family: var(--body); font-size: 12px; color: var(--text2); line-height: 1.7; }
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.rmonth{background:var(--bg2);padding:24px 18px}
+.rm-head{font-family:var(--display);font-size:12px;font-weight:700;margin-bottom:6px}
+.rmonth:nth-child(1) .rm-head{color:var(--az)}
+.rmonth:nth-child(2) .rm-head{color:#55aaff}
+.rmonth:nth-child(3) .rm-head{color:var(--vi)}
+.rmonth:nth-child(4) .rm-head{color:var(--ro)}
+.rm-line{height:1px;margin-bottom:14px}
+.rmonth:nth-child(1) .rm-line{background:linear-gradient(90deg,var(--az3),transparent)}
+.rmonth:nth-child(2) .rm-line{background:linear-gradient(90deg,#002244,transparent)}
+.rmonth:nth-child(3) .rm-line{background:linear-gradient(90deg,var(--vi3),transparent)}
+.rmonth:nth-child(4) .rm-line{background:linear-gradient(90deg,var(--ro3),transparent)}
+.ri{font-family:var(--body);font-size:11px;color:var(--text2);margin-bottom:7px;padding-left:10px;border-left:1px solid var(--border);line-height:1.5}
 
-/* ====== TERMINAL BLOCK ====== */
-.terminal {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  font-family: var(--mono);
-}
-.term-bar {
-  background: rgba(10,26,58,0.5);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid var(--border);
-}
-.term-dot { width: 8px; height: 8px; border-radius: 50%; }
-.term-dot.red { background: #ff4444; }
-.term-dot.yellow { background: #ffaa00; }
-.term-dot.green { background: #00ff88; }
-.term-title { font-size: 10px; color: var(--text3); letter-spacing: 2px; margin-left: 8px; }
-.term-body { padding: 24px; }
-.term-line { font-size: 12px; line-height: 2; }
-.term-line .prompt { color: var(--az2); }
-.term-line .cmd { color: var(--az); }
-.term-line .ok { color: #00ffaa; }
-.term-line .muted { color: var(--text3); }
-.term-line .hi-vi { color: var(--vi); }
-.term-line .hi-ro { color: var(--ro); }
-.cursor { animation: blink 1.2s step-end infinite; }
+/* TEAM */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.tmember{border:1px solid var(--border);border-radius:4px;padding:28px;background:var(--bg2);display:flex;gap:18px;align-items:flex-start;transition:border-color .2s}
+.tmember:hover{border-color:var(--az3)}
+.tmember:nth-child(2):hover{border-color:var(--vi3)}
+.avatar{width:48px;height:48px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:16px;font-weight:700;flex-shrink:0}
+.avatar.az{border:1px solid var(--az3);color:var(--az);background:rgba(0,100,255,.08)}
+.avatar.vi{border:1px solid var(--vi3);color:var(--vi);background:rgba(150,0,255,.08)}
+.tm-name{font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:4px}
+.tmember:nth-child(1) .tm-name{color:var(--az)}
+.tmember:nth-child(2) .tm-name{color:var(--vi)}
+.tm-role{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--text3);margin-bottom:10px}
+.tm-bio{font-family:var(--body);font-size:12px;color:var(--text2);line-height:1.7}
 
-/* ====== FOOTER ====== */
-footer {
-  position: relative; z-index: 1;
-  border-top: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.foot-logo { font-family: var(--display); font-size: 14px; font-weight: 700; color: #fff; }
-.foot-logo span { color: var(--az); }
-.foot-info { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 1px; line-height: 2; }
-.foot-links { display: flex; gap: 20px; }
-.foot-links a { font-family: var(--mono); font-size: 9px; color: var(--text2); text-decoration: none; letter-spacing: 1px; }
-.foot-links a:hover { color: var(--az); }
+/* CONTACT FORM */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.form-box{border:1px solid var(--border);border-radius:4px;background:var(--bg2);padding:32px}
+.form-box::before{content:'';display:block;height:1px;background:linear-gradient(90deg,var(--az3),var(--vi3),transparent);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--az2);display:block;margin-bottom:6px}
+.form-input,.form-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:2px;padding:12px 14px;font-family:var(--mono);font-size:12px;color:var(--text);outline:none;transition:border-color .2s;resize:none}
+.form-input:focus,.form-textarea:focus{border-color:var(--az2)}
+.form-textarea{height:120px}
+.form-submit{font-family:var(--mono);font-size:11px;letter-spacing:3px;padding:14px 32px;border:1px solid var(--az3);border-radius:2px;background:rgba(0,100,255,.08);color:var(--az);cursor:pointer;transition:all .2s;width:100%}
+.form-submit:hover{background:rgba(0,170,255,.15);border-color:var(--az);box-shadow:0 0 20px rgba(0,170,255,.2)}
+.form-msg{font-family:var(--mono);font-size:10px;color:#00ffaa;margin-top:10px;min-height:18px;letter-spacing:1px}
+.contact-info{display:flex;flex-direction:column;gap:14px}
+.cinfo-card{border:1px solid var(--border);border-radius:4px;background:var(--bg2);padding:20px;transition:border-color .2s}
+.cinfo-card:hover{border-color:var(--az3)}
+.cinfo-label{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--text3);margin-bottom:6px}
+.cinfo-val{font-family:var(--mono);font-size:12px;color:var(--az)}
+.cinfo-val a{color:var(--az);text-decoration:none}
+.cinfo-val a:hover{color:var(--vi)}
 
-/* ====== RESPONSIVE ====== */
-@media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  section { padding: 60px 20px; }
-  .hero { padding: 100px 20px 60px; }
-  .roadmap { grid-template-columns: 1fr 1fr; }
-  .brow { grid-template-columns: 1fr 80px; }
-  .bbar-wrap { display: none; }
-  footer { padding: 32px 20px; }
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);background:var(--bg2);padding:36px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-logo{font-family:var(--display);font-size:14px;font-weight:700;color:#fff}
+.foot-logo span{color:var(--az)}
+.foot-info{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:1px;line-height:2}
+.foot-links{display:flex;gap:20px}
+.foot-links a{font-family:var(--mono);font-size:9px;color:var(--text2);text-decoration:none;letter-spacing:1px}
+.foot-links a:hover{color:var(--az)}
+
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links li:not(:last-child){display:none}
+  section{padding:60px 20px}
+  .hero{padding:100px 20px 60px}
+  .roadmap{grid-template-columns:1fr 1fr}
+  .brow{grid-template-columns:1fr 70px}
+  .bbar-wrap{display:none}
+  .contact-wrap{grid-template-columns:1fr}
+  footer{padding:28px 20px}
 }
 </style>
 </head>
 <body>
-
 <div class="scanline"></div>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">RWA<span>gallery</span>.art</a>
   <ul class="nav-links">
-    <li><a href="#protocol">// PROTOCOL</a></li>
-    <li><a href="#about">// ABOUT</a></li>
-    <li><a href="#team">// TEAM</a></li>
-    <li><a href="#roadmap">// ROADMAP</a></li>
+    <li><a href="#protocol" data-i18n="nav_protocol">// PROTOCOLO</a></li>
+    <li><a href="#gallery" data-i18n="nav_gallery">// GALERÍA</a></li>
+    <li><a href="#about" data-i18n="nav_about">// PROYECTO</a></li>
+    <li><a href="#team" data-i18n="nav_team">// EQUIPO</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">// CONTACTO</a></li>
+    <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
   </ul>
-  <div class="nav-status">
-    <div class="dot-live"></div>
-    KUSAMA MAINNET
+  <div style="display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--text3)">
+    <div class="nav-dot"></div> KUSAMA
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">// KSM ART &amp; SOCIAL EXPERIMENTS INITIATIVE // REAL WORLD ASSET PROTOCOL</div>
+  <div class="hero-eyebrow" data-i18n="hero_eye">// KSM ART & SOCIAL EXPERIMENTS INITIATIVE // PROTOCOLO RWA DE ARTE</div>
   <h1 class="hero-title">RWA<span class="az">gallery</span><span class="vi">.</span><span class="ro">art</span></h1>
-  <p class="hero-sub">PHYSICAL ART <span>//</span> BLOCKCHAIN VERIFIED <span>//</span> KUSAMA NETWORK</p>
+  <p class="hero-sub"><span data-i18n="hero_sub">ARTE FÍSICO <span>//</span> VERIFICADO EN BLOCKCHAIN <span>//</span> RED KUSAMA</span></p>
   <div class="hero-tags">
     <span class="tag tag-az">KUSAMA</span>
     <span class="tag tag-vi">RWA PROTOCOL</span>
     <span class="tag tag-ro">ART + CHAIN</span>
     <span class="tag tag-az">ESCROW</span>
     <span class="tag tag-vi">CYPHERPUNK</span>
-    <span class="tag tag-ro">IPFS VERIFIED</span>
+    <span class="tag tag-ro">IPFS</span>
     <span class="tag tag-az">NON-CUSTODIAL</span>
   </div>
   <div class="hero-btns">
-    <a href="#protocol" class="btn btn-az">// VER PROTOCOLO</a>
-    <a href="#team" class="btn btn-vi">// EL PROYECTO</a>
+    <a href="#protocol" class="btn btn-az" data-i18n="hero_btn1">// VER PROTOCOLO</a>
+    <a href="#wallet" class="btn btn-vi" data-i18n="hero_btn2">// CONECTAR WALLET</a>
   </div>
 </div>
 
 <!-- STATS -->
-<section style="padding-top: 0;">
+<section style="padding-top:0">
   <div class="stats-bar">
-    <div class="stat">
-      <span class="stat-lab">PRESUPUESTO</span>
-      <span class="stat-val az">$10K</span>
-      <span class="stat-sub">DOT · KUSAMA HUB</span>
-    </div>
-    <div class="stat">
-      <span class="stat-lab">DURACIÓN</span>
-      <span class="stat-val vi">4 MES</span>
-      <span class="stat-sub">INFRA → LAUNCH</span>
-    </div>
-    <div class="stat">
-      <span class="stat-lab">VALIDADO</span>
-      <span class="stat-val ro">1 ✓</span>
-      <span class="stat-sub">ENTREGA FÍSICA REAL</span>
-    </div>
-    <div class="stat">
-      <span class="stat-lab">CADENA</span>
-      <span class="stat-val az">KSM</span>
-      <span class="stat-sub">ASSET HUB</span>
-    </div>
-    <div class="stat">
-      <span class="stat-lab">ALMACENAMIENTO</span>
-      <span class="stat-val vi">IPFS</span>
-      <span class="stat-sub">EVIDENCIAS + COA</span>
-    </div>
-    <div class="stat">
-      <span class="stat-lab">ARTISTAS</span>
-      <span class="stat-val ro">2+</span>
-      <span class="stat-sub">COLABORADORES</span>
-    </div>
+    <div class="stat"><span class="stat-lab" data-i18n="stat1_lab">PRESUPUESTO</span><span class="stat-val az">$10K</span><span class="stat-sub">DOT · KUSAMA HUB</span></div>
+    <div class="stat"><span class="stat-lab" data-i18n="stat2_lab">DURACIÓN</span><span class="stat-val vi">4 MES</span><span class="stat-sub" data-i18n="stat2_sub">INFRA → LANZAMIENTO</span></div>
+    <div class="stat"><span class="stat-lab" data-i18n="stat3_lab">VALIDADO</span><span class="stat-val ro">1 ✓</span><span class="stat-sub" data-i18n="stat3_sub">ENTREGA FÍSICA REAL</span></div>
+    <div class="stat"><span class="stat-lab">CHAIN</span><span class="stat-val az">KSM</span><span class="stat-sub">ASSET HUB</span></div>
+    <div class="stat"><span class="stat-lab" data-i18n="stat5_lab">ALMACENAMIENTO</span><span class="stat-val vi">IPFS</span><span class="stat-sub">EVIDENCIAS + COA</span></div>
+    <div class="stat"><span class="stat-lab" data-i18n="stat6_lab">ARTISTAS</span><span class="stat-val ro">2+</span><span class="stat-sub" data-i18n="stat6_sub">COLABORADORES</span></div>
   </div>
 </section>
 
-<!-- PROTOCOL FLOW -->
+<!-- PROTOCOL -->
 <section id="protocol">
-  <div class="section-label">// 01 — PROTOCOL</div>
-  <h2 class="section-title">Cómo funciona el <span class="az">protocolo</span></h2>
+  <div class="section-label" data-i18n="prot_label">// 01 — PROTOCOLO</div>
+  <h2 class="section-title" data-i18n="prot_title">Cómo funciona el <span class="az">protocolo</span></h2>
   <div class="section-divider"></div>
   <div class="flow-grid">
-    <div class="flow-step">
-      <div class="flow-num">01</div>
-      <div class="flow-title">Wallet Connect + NFT Verify</div>
-      <div class="flow-desc">El usuario conecta su wallet (Talisman, SubWallet, Nova). Se verifica criptográficamente la propiedad del NFT en Kusama Asset Hub.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-num">02</div>
-      <div class="flow-title">Physical Claim</div>
-      <div class="flow-desc">El propietario del NFT introduce su dirección de envío. Los datos se encriptan off-chain en PostgreSQL. Zero intermediaries.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-num">03</div>
-      <div class="flow-title">Escrow Lock</div>
-      <div class="flow-desc">Los fondos se bloquean automáticamente en el escrow descentralizado. Modelo A (split) o Modelo B (depósito del vendedor).</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-num">04</div>
-      <div class="flow-title">Shipping Proof → IPFS</div>
-      <div class="flow-desc">El artista sube fotos, tracking y seguro de transporte. Evidencias almacenadas permanentemente en IPFS. Confirmación por QR.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-num">05</div>
-      <div class="flow-title">Delivery Confirmed + COA</div>
-      <div class="flow-desc">El comprador confirma la recepción o el timer de 7 días activa la liberación automática. Se mintea el Certificado de Autenticidad como NFT.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-num">06</div>
-      <div class="flow-title">Payment Released</div>
-      <div class="flow-desc">El pago se libera al artista. Sistema de disputas multi-firma disponible. Ciclo completo cerrado en blockchain.</div>
-    </div>
+    <div class="flow-step"><div class="flow-num">01</div><div class="flow-title" data-i18n="f1t">Wallet Connect + NFT Verify</div><div class="flow-desc" data-i18n="f1d">Conecta tu wallet (Talisman, SubWallet, Nova). Se verifica criptográficamente la propiedad del NFT en Kusama Asset Hub.</div></div>
+    <div class="flow-step"><div class="flow-num">02</div><div class="flow-title" data-i18n="f2t">Physical Claim</div><div class="flow-desc" data-i18n="f2d">El propietario introduce su dirección de envío. Los datos se encriptan off-chain. Sin intermediarios.</div></div>
+    <div class="flow-step"><div class="flow-num">03</div><div class="flow-title" data-i18n="f3t">Escrow Lock</div><div class="flow-desc" data-i18n="f3d">Los fondos se bloquean automáticamente en el escrow descentralizado. Modelo split o depósito del vendedor.</div></div>
+    <div class="flow-step"><div class="flow-num">04</div><div class="flow-title" data-i18n="f4t">Shipping → IPFS</div><div class="flow-desc" data-i18n="f4d">El artista sube fotos, tracking y seguro. Evidencias almacenadas permanentemente en IPFS.</div></div>
+    <div class="flow-step"><div class="flow-num">05</div><div class="flow-title" data-i18n="f5t">Delivery + COA</div><div class="flow-desc" data-i18n="f5d">El comprador confirma la recepción o el timer de 7 días activa la liberación. Se mintea el Certificado de Autenticidad.</div></div>
+    <div class="flow-step"><div class="flow-num">06</div><div class="flow-title" data-i18n="f6t">Payment Release</div><div class="flow-desc" data-i18n="f6d">El pago se libera al artista. Sistema de disputas multi-firma disponible. Ciclo completo en blockchain.</div></div>
   </div>
 </section>
 
 <!-- TERMINAL -->
-<section style="padding-top: 0;">
+<section style="padding-top:0">
   <div class="terminal">
     <div class="term-bar">
-      <div class="term-dot red"></div>
-      <div class="term-dot yellow"></div>
-      <div class="term-dot green"></div>
+      <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
       <span class="term-title">rwagallery@kusama:~$</span>
     </div>
     <div class="term-body">
       <div class="term-line"><span class="prompt">$ </span><span class="cmd">verify --nft ART_001 --chain kusama-asset-hub</span></div>
       <div class="term-line"><span class="ok">✓</span> NFT ownership confirmed :: wallet 13md2Kef...z7pFw</div>
       <div class="term-line"><span class="ok">✓</span> Physical asset linked :: <span class="hi-vi">Pepe Semitiel — Obra #001</span></div>
-      <div class="term-line"><span class="ok">✓</span> Shipping insurance verified :: <span class="hi-az">ACTIVE</span></div>
+      <div class="term-line"><span class="ok">✓</span> Shipping insurance verified :: <span class="az">ACTIVE</span></div>
       <div class="term-line"><span class="muted">→</span> Escrow locked :: <span class="hi-ro">12.5 KSM</span></div>
       <div class="term-line"><span class="muted">→</span> IPFS evidence stored :: QmX7f...4aB</div>
       <div class="term-line"><span class="muted">→</span> COA NFT minted :: <span class="hi-vi">CERT_ART_001</span></div>
-      <div class="term-line"><span class="ok">✓</span> Payment released :: <span class="hi-az">CYCLE COMPLETE</span></div>
+      <div class="term-line"><span class="ok">✓</span> Payment released :: <span class="az">CYCLE COMPLETE</span></div>
       <div class="term-line"><span class="prompt">$ </span><span class="cursor">_</span></div>
     </div>
   </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-label" data-i18n="gal_label">// 02 — GALERÍA</div>
+  <h2 class="section-title" data-i18n="gal_title">Obras <span class="vi">tokenizadas</span></h2>
+  <div class="section-divider"></div>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <div class="gallery-img"><span class="gallery-placeholder">FD</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title" data-i18n="g1t">FDaniel — Obra #001</div>
+        <div class="gallery-meta" data-i18n="g1m">KUSAMA ASSET HUB · ARTE DIGITAL</div>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-img"><span class="gallery-placeholder">PS</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title" data-i18n="g2t">Semitiel — Pintura #001</div>
+        <div class="gallery-meta" data-i18n="g2m">OBRA FÍSICA TOKENIZADA · CIEZA</div>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-img"><span class="gallery-placeholder">FD</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title" data-i18n="g3t">FDaniel — Generativo #001</div>
+        <div class="gallery-meta" data-i18n="g3m">ARTE GENERATIVO · KUSAMA</div>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-img"><span class="gallery-placeholder">PS</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title" data-i18n="g4t">Semitiel — Pintura #002</div>
+        <div class="gallery-meta" data-i18n="g4m">OBRA FÍSICA TOKENIZADA · CIEZA</div>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-img"><span class="gallery-placeholder">FD</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title" data-i18n="g5t">FDaniel — Colección Kusama</div>
+        <div class="gallery-meta" data-i18n="g5m">NFT · CHAOTIC MARKETPLACE</div>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-img"><span class="gallery-placeholder">RWA</span></div>
+      <div class="gallery-info">
+        <div class="gallery-title" data-i18n="g6t">Próximamente</div>
+        <div class="gallery-meta" data-i18n="g6m">MÁS OBRAS EN CAMINO</div>
+      </div>
+    </div>
+  </div>
+  <p class="gallery-note" data-i18n="gal_note">// Las imágenes de las obras se añadirán próximamente. Las placeholders serán reemplazadas por las obras reales de FDaniel y Pepe Semitiel.</p>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">// 02 — ABOUT</div>
-  <h2 class="section-title">El <span class="vi">problema</span> y la <span class="ro">solución</span></h2>
+  <div class="section-label" data-i18n="about_label">// 03 — PROYECTO</div>
+  <h2 class="section-title" data-i18n="about_title">El <span class="vi">problema</span> y la <span class="ro">solución</span></h2>
   <div class="section-divider"></div>
   <div class="cards">
-    <div class="ncard az">
-      <div class="ncard-label">// PROBLEMA</div>
-      <div class="ncard-title">NFTs sin puente físico</div>
-      <div class="ncard-body">En Kusama y Polkadot no existe un sistema fiable para conectar NFTs con activos físicos reales. Los artistas tradicionales no pueden tokenizar su obra de forma segura. Los compradores asumen riesgo total.</div>
+    <div class="ncard az"><div class="ncard-label" data-i18n="c1l">// PROBLEMA</div><div class="ncard-title" data-i18n="c1t">NFTs sin puente físico</div><div class="ncard-body" data-i18n="c1b">En Kusama y Polkadot no existe un sistema fiable para conectar NFTs con activos físicos reales. Los artistas tradicionales no pueden tokenizar su obra de forma segura. Los compradores asumen riesgo total.</div></div>
+    <div class="ncard vi"><div class="ncard-label" data-i18n="c2l">// SOLUCIÓN</div><div class="ncard-title" data-i18n="c2t">Protocolo escrow no custodial</div><div class="ncard-body" data-i18n="c2b">RWAgallery.art introduce verificación criptográfica, escrow descentralizado y logística documentada en IPFS. El primer protocolo RWA funcional en arte dentro del ecosistema Kusama.</div></div>
+    <div class="ncard ro"><div class="ncard-label" data-i18n="c3l">// VALIDACIÓN</div><div class="ncard-title" data-i18n="c3t">Ya funciona. No es teoría.</div><div class="ncard-body" data-i18n="c3b">Un NFT vendido y entregado físicamente en Croacia. Ciclo completo verificado: tokenización → pago → envío → entrega. El protocolo está probado en condiciones reales.</div></div>
+  </div>
+</section>
+
+<!-- WALLET CONNECT -->
+<section id="wallet">
+  <div class="section-label" data-i18n="wal_label">// 04 — WALLET</div>
+  <h2 class="section-title" data-i18n="wal_title">Conecta tu <span class="az">wallet</span></h2>
+  <div class="section-divider"></div>
+  <div class="wallet-section">
+    <div class="wallet-title" data-i18n="wal_head">Verifica tu propiedad NFT</div>
+    <div class="wallet-sub" data-i18n="wal_sub">CONECTA TU WALLET PARA RECLAMAR TU OBRA FÍSICA</div>
+    <div class="wallet-btns">
+      <button class="wallet-btn" onclick="connectWallet('Talisman')">// TALISMAN</button>
+      <button class="wallet-btn vi" onclick="connectWallet('SubWallet')">// SUBWALLET</button>
+      <button class="wallet-btn ro" onclick="connectWallet('Nova Wallet')">// NOVA WALLET</button>
     </div>
-    <div class="ncard vi">
-      <div class="ncard-label">// SOLUCIÓN</div>
-      <div class="ncard-title">Protocolo escrow no custodial</div>
-      <div class="ncard-body">RWAgallery.art introduce verificación criptográfica, escrow descentralizado y logística documentada en IPFS. El primer protocolo RWA funcional en arte dentro del ecosistema Kusama.</div>
-    </div>
-    <div class="ncard ro">
-      <div class="ncard-label">// VALIDACIÓN</div>
-      <div class="ncard-title">Ya funciona. No es teoría.</div>
-      <div class="ncard-body">Un NFT vendido y entregado físicamente en Croacia. Ciclo completo verificado: tokenización → pago → envío → entrega. El protocolo está probado en condiciones reales.</div>
-    </div>
+    <div class="wallet-status" id="walletStatus" data-i18n="wal_status">// NINGUNA WALLET CONECTADA</div>
   </div>
 </section>
 
 <!-- BUDGET -->
 <section>
-  <div class="section-label">// 03 — BUDGET</div>
-  <h2 class="section-title">Presupuesto <span class="az">$10,000</span></h2>
+  <div class="section-label" data-i18n="bud_label">// 05 — PRESUPUESTO</div>
+  <h2 class="section-title">Budget <span class="az">$10,000</span></h2>
   <div class="section-divider"></div>
   <div class="budget-rows">
-    <div class="brow">
-      <span class="blab">Frontend (Next.js + wallets)</span>
-      <div class="bbar-wrap"><div class="bbar az" style="width:70%"></div></div>
-      <span class="bval">$3,500</span>
-    </div>
-    <div class="brow">
-      <span class="blab">Motor generativo</span>
-      <div class="bbar-wrap"><div class="bbar vi" style="width:50%"></div></div>
-      <span class="bval">$2,500</span>
-    </div>
-    <div class="brow">
-      <span class="blab">Backend + seguridad</span>
-      <div class="bbar-wrap"><div class="bbar az" style="width:40%"></div></div>
-      <span class="bval">$2,000</span>
-    </div>
-    <div class="brow">
-      <span class="blab">Arte + sonido</span>
-      <div class="bbar-wrap"><div class="bbar ro" style="width:20%"></div></div>
-      <span class="bval">$1,000</span>
-    </div>
-    <div class="brow">
-      <span class="blab">Logística</span>
-      <div class="bbar-wrap"><div class="bbar vi" style="width:20%"></div></div>
-      <span class="bval">$1,000</span>
-    </div>
+    <div class="brow"><span class="blab" data-i18n="b1">Frontend (Next.js + wallets)</span><div class="bbar-wrap"><div class="bbar az" style="width:70%"></div></div><span class="bval">$3,500</span></div>
+    <div class="brow"><span class="blab" data-i18n="b2">Motor generativo</span><div class="bbar-wrap"><div class="bbar vi" style="width:50%"></div></div><span class="bval">$2,500</span></div>
+    <div class="brow"><span class="blab" data-i18n="b3">Backend + seguridad</span><div class="bbar-wrap"><div class="bbar az" style="width:40%"></div></div><span class="bval">$2,000</span></div>
+    <div class="brow"><span class="blab" data-i18n="b4">Arte + sonido</span><div class="bbar-wrap"><div class="bbar ro" style="width:20%"></div></div><span class="bval">$1,000</span></div>
+    <div class="brow"><span class="blab" data-i18n="b5">Logística</span><div class="bbar-wrap"><div class="bbar vi" style="width:20%"></div></div><span class="bval">$1,000</span></div>
   </div>
   <div class="btotal">
-    <span class="btotal-lab">TOTAL SOLICITADO · PAGADO EN DOT · KUSAMA ASSET HUB</span>
+    <span class="btotal-lab" data-i18n="btot_lab">TOTAL · PAGADO EN DOT · KUSAMA ASSET HUB</span>
     <span class="btotal-val">$10,000 USD</span>
   </div>
 </section>
 
 <!-- ROADMAP -->
 <section id="roadmap">
-  <div class="section-label">// 04 — ROADMAP</div>
-  <h2 class="section-title">Plan de <span class="ro">ejecución</span></h2>
+  <div class="section-label" data-i18n="road_label">// 06 — ROADMAP</div>
+  <h2 class="section-title" data-i18n="road_title">Plan de <span class="ro">ejecución</span></h2>
   <div class="section-divider"></div>
   <div class="roadmap">
-    <div class="rmonth">
-      <div class="rm-head">MES 01</div>
-      <div class="rm-line"></div>
-      <div class="ri">Infraestructura base</div>
-      <div class="ri">Integración wallets (Talisman, SubWallet, Nova)</div>
-      <div class="ri">Repositorio GitHub público</div>
-      <div class="ri">Verificación NFT on-chain</div>
-    </div>
-    <div class="rmonth">
-      <div class="rm-head">MES 02</div>
-      <div class="rm-line"></div>
-      <div class="ri">Motor generativo (arte físico → digital)</div>
-      <div class="ri">Galería pública</div>
-      <div class="ri">Web + identidad RWAgallery.art</div>
-      <div class="ri">Primeras obras Semitiel + FDaniel</div>
-    </div>
-    <div class="rmonth">
-      <div class="rm-head">MES 03</div>
-      <div class="rm-line"></div>
-      <div class="ri">Sistema escrow (Modelo A + B)</div>
-      <div class="ri">Base de datos segura (PostgreSQL)</div>
-      <div class="ri">Almacenamiento IPFS</div>
-      <div class="ri">Sistema de disputas multi-firma</div>
-    </div>
-    <div class="rmonth">
-      <div class="rm-head">MES 04</div>
-      <div class="rm-line"></div>
-      <div class="ri">Testing con 10 obras físicas</div>
-      <div class="ri">Minteo de COA como NFT</div>
-      <div class="ri">Lanzamiento público</div>
-      <div class="ri">Documentación final + reporte</div>
-    </div>
+    <div class="rmonth"><div class="rm-head" data-i18n="m1h">MES 01</div><div class="rm-line"></div><div class="ri" data-i18n="m1a">Infraestructura base</div><div class="ri" data-i18n="m1b">Integración wallets</div><div class="ri" data-i18n="m1c">GitHub público</div><div class="ri" data-i18n="m1d">NFT verify on-chain</div></div>
+    <div class="rmonth"><div class="rm-head" data-i18n="m2h">MES 02</div><div class="rm-line"></div><div class="ri" data-i18n="m2a">Motor generativo</div><div class="ri" data-i18n="m2b">Galería pública</div><div class="ri" data-i18n="m2c">Web + identidad</div><div class="ri" data-i18n="m2d">Primeras obras</div></div>
+    <div class="rmonth"><div class="rm-head" data-i18n="m3h">MES 03</div><div class="rm-line"></div><div class="ri" data-i18n="m3a">Sistema escrow</div><div class="ri" data-i18n="m3b">Base de datos PG</div><div class="ri" data-i18n="m3c">IPFS storage</div><div class="ri" data-i18n="m3d">Multi-firma</div></div>
+    <div class="rmonth"><div class="rm-head" data-i18n="m4h">MES 04</div><div class="rm-line"></div><div class="ri" data-i18n="m4a">Testing 10 obras</div><div class="ri" data-i18n="m4b">COA NFT</div><div class="ri" data-i18n="m4c">Lanzamiento</div><div class="ri" data-i18n="m4d">Reporte final</div></div>
   </div>
 </section>
 
 <!-- TEAM -->
 <section id="team">
-  <div class="section-label">// 05 — TEAM</div>
-  <h2 class="section-title">Los <span class="vi">artistas</span></h2>
+  <div class="section-label" data-i18n="team_label">// 07 — EQUIPO</div>
+  <h2 class="section-title" data-i18n="team_title">Los <span class="vi">artistas</span></h2>
   <div class="section-divider"></div>
   <div class="team">
     <div class="tmember">
@@ -717,7 +465,7 @@ footer {
       <div>
         <div class="tm-name">FDaniel</div>
         <div class="tm-role">DIGITAL ARTIST · PROTOCOL ARCHITECT · @frandanvg</div>
-        <div class="tm-bio">Artista digital activo en el ecosistema Kusama/Polkadot desde 2022. Creador de NFTs en Chaotic. Impulsor del primer protocolo RWA de arte en Kusama. Formación artística en el Centro de Arte Semitiel, Cieza.</div>
+        <div class="tm-bio" data-i18n="t1bio">Artista digital activo en el ecosistema Kusama/Polkadot desde 2022. Creador de NFTs en Chaotic. Impulsor del primer protocolo RWA de arte en Kusama. Formación artística en el Centro de Arte Semitiel, Cieza.</div>
       </div>
     </div>
     <div class="tmember">
@@ -725,24 +473,238 @@ footer {
       <div>
         <div class="tm-name">Pepe Semitiel</div>
         <div class="tm-role">TRADITIONAL PAINTER · CENTRO DE ARTE SEMITIEL, CIEZA</div>
-        <div class="tm-bio">Artista plástico con trayectoria consolidada en la pintura tradicional. Fundador del Centro de Arte Semitiel en Cieza, Murcia. Sus obras físicas son las primeras en integrarse en el protocolo RWAgallery.art.</div>
+        <div class="tm-bio" data-i18n="t2bio">Artista plástico con trayectoria consolidada en la pintura tradicional. Fundador del Centro de Arte Semitiel en Cieza, Murcia. Sus obras físicas son las primeras en integrarse en el protocolo RWAgallery.art.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" data-i18n="con_label">// 08 — CONTACTO</div>
+  <h2 class="section-title" data-i18n="con_title">Ponte en <span class="ro">contacto</span></h2>
+  <div class="section-divider"></div>
+  <div class="contact-wrap">
+    <div class="form-box">
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label class="form-label" data-i18n="fl_name">// NOMBRE</label>
+          <input class="form-input" type="text" name="name" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="fl_email">// EMAIL</label>
+          <input class="form-input" type="email" name="email" required placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="fl_msg">// MENSAJE</label>
+          <textarea class="form-textarea" name="message" required placeholder="Tu mensaje..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" data-i18n="fl_send">// ENVIAR MENSAJE</button>
+        <div class="form-msg" id="formMsg"></div>
+      </form>
+    </div>
+    <div class="contact-info">
+      <div class="cinfo-card"><div class="cinfo-label">X / TWITTER</div><div class="cinfo-val"><a href="https://x.com/frandanvg" target="_blank">@frandanvg</a></div></div>
+      <div class="cinfo-card"><div class="cinfo-label">NFT COLLECTIONS</div><div class="cinfo-val"><a href="https://chaotic.art" target="_blank">chaotic.art</a></div></div>
+      <div class="cinfo-card"><div class="cinfo-label">BLOCKCHAIN</div><div class="cinfo-val">Kusama Asset Hub</div></div>
+      <div class="cinfo-card"><div class="cinfo-label">WALLET</div><div class="cinfo-val" style="font-size:9px;word-break:break-all">13md2Kef1dbqQS43yHtoCxJzsFfxH1LNb5LVKdCVfP5z7pFw</div></div>
+      <div class="cinfo-card"><div class="cinfo-label" data-i18n="ci_loc">UBICACIÓN</div><div class="cinfo-val" data-i18n="ci_loc_val">España · Cieza, Murcia</div></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="foot-logo">RWA<span>gallery</span>.art</div>
   <div class="foot-info">
-    WALLET: 13md2Kef1dbqQS43yHtoCxJzsFfxH1LNb5LVKdCVfP5z7pFw<br>
+    WALLET: 13md2Kef...z7pFw<br>
     KSM ART &amp; SOCIAL EXPERIMENTS INITIATIVE · SPAIN · EST. 2022
   </div>
   <div class="foot-links">
-    <a href="https://x.com/frandanvg" target="_blank">// X @frandanvg</a>
-    <a href="https://chaotic.art" target="_blank">// chaotic.art</a>
+    <a href="https://x.com/frandanvg" target="_blank">// X</a>
+    <a href="https://chaotic.art" target="_blank">// CHAOTIC</a>
+    <a href="https://github.com/fdaniel-art/rwagallery-art" target="_blank">// GITHUB</a>
   </div>
 </footer>
 
+<script>
+// ====== TRANSLATIONS ======
+const i18n = {
+  es: {
+    nav_protocol:'// PROTOCOLO', nav_gallery:'// GALERÍA', nav_about:'// PROYECTO',
+    nav_team:'// EQUIPO', nav_contact:'// CONTACTO',
+    hero_eye:'// KSM ART & SOCIAL EXPERIMENTS INITIATIVE // PROTOCOLO RWA DE ARTE',
+    hero_sub:'ARTE FÍSICO <span>//</span> VERIFICADO EN BLOCKCHAIN <span>//</span> RED KUSAMA',
+    hero_btn1:'// VER PROTOCOLO', hero_btn2:'// CONECTAR WALLET',
+    stat1_lab:'PRESUPUESTO', stat2_lab:'DURACIÓN', stat2_sub:'INFRA → LANZAMIENTO',
+    stat3_lab:'VALIDADO', stat3_sub:'ENTREGA FÍSICA REAL', stat5_lab:'ALMACENAMIENTO',
+    stat6_lab:'ARTISTAS', stat6_sub:'COLABORADORES',
+    prot_label:'// 01 — PROTOCOLO',
+    prot_title:'Cómo funciona el <span class="az">protocolo</span>',
+    f1t:'Wallet Connect + NFT Verify',
+    f1d:'Conecta tu wallet (Talisman, SubWallet, Nova). Se verifica criptográficamente la propiedad del NFT en Kusama Asset Hub.',
+    f2t:'Physical Claim',
+    f2d:'El propietario introduce su dirección de envío. Los datos se encriptan off-chain. Sin intermediarios.',
+    f3t:'Escrow Lock',
+    f3d:'Los fondos se bloquean automáticamente en el escrow descentralizado. Modelo split o depósito del vendedor.',
+    f4t:'Shipping → IPFS',
+    f4d:'El artista sube fotos, tracking y seguro. Evidencias almacenadas permanentemente en IPFS.',
+    f5t:'Delivery + COA',
+    f5d:'El comprador confirma la recepción o el timer de 7 días activa la liberación. Se mintea el Certificado de Autenticidad.',
+    f6t:'Payment Release',
+    f6d:'El pago se libera al artista. Sistema de disputas multi-firma disponible. Ciclo completo en blockchain.',
+    gal_label:'// 02 — GALERÍA',
+    gal_title:'Obras <span class="vi">tokenizadas</span>',
+    g1t:'FDaniel — Obra #001', g1m:'KUSAMA ASSET HUB · ARTE DIGITAL',
+    g2t:'Semitiel — Pintura #001', g2m:'OBRA FÍSICA TOKENIZADA · CIEZA',
+    g3t:'FDaniel — Generativo #001', g3m:'ARTE GENERATIVO · KUSAMA',
+    g4t:'Semitiel — Pintura #002', g4m:'OBRA FÍSICA TOKENIZADA · CIEZA',
+    g5t:'FDaniel — Colección Kusama', g5m:'NFT · CHAOTIC MARKETPLACE',
+    g6t:'Próximamente', g6m:'MÁS OBRAS EN CAMINO',
+    gal_note:'// Las imágenes de las obras se añadirán próximamente.',
+    about_label:'// 03 — PROYECTO',
+    about_title:'El <span class="vi">problema</span> y la <span class="ro">solución</span>',
+    c1l:'// PROBLEMA', c1t:'NFTs sin puente físico',
+    c1b:'En Kusama y Polkadot no existe un sistema fiable para conectar NFTs con activos físicos reales. Los artistas tradicionales no pueden tokenizar su obra de forma segura.',
+    c2l:'// SOLUCIÓN', c2t:'Protocolo escrow no custodial',
+    c2b:'RWAgallery.art introduce verificación criptográfica, escrow descentralizado y logística documentada en IPFS. El primer protocolo RWA funcional en arte en Kusama.',
+    c3l:'// VALIDACIÓN', c3t:'Ya funciona. No es teoría.',
+    c3b:'Un NFT vendido y entregado físicamente en Croacia. Ciclo completo verificado. El protocolo está probado en condiciones reales.',
+    wal_label:'// 04 — WALLET',
+    wal_title:'Conecta tu <span class="az">wallet</span>',
+    wal_head:'Verifica tu propiedad NFT',
+    wal_sub:'CONECTA TU WALLET PARA RECLAMAR TU OBRA FÍSICA',
+    wal_status:'// NINGUNA WALLET CONECTADA',
+    bud_label:'// 05 — PRESUPUESTO',
+    b1:'Frontend (Next.js + wallets)', b2:'Motor generativo',
+    b3:'Backend + seguridad', b4:'Arte + sonido', b5:'Logística',
+    btot_lab:'TOTAL · PAGADO EN DOT · KUSAMA ASSET HUB',
+    road_label:'// 06 — ROADMAP',
+    road_title:'Plan de <span class="ro">ejecución</span>',
+    m1h:'MES 01', m1a:'Infraestructura base', m1b:'Integración wallets', m1c:'GitHub público', m1d:'NFT verify on-chain',
+    m2h:'MES 02', m2a:'Motor generativo', m2b:'Galería pública', m2c:'Web + identidad', m2d:'Primeras obras',
+    m3h:'MES 03', m3a:'Sistema escrow', m3b:'Base de datos PG', m3c:'IPFS storage', m3d:'Multi-firma',
+    m4h:'MES 04', m4a:'Testing 10 obras', m4b:'COA NFT', m4c:'Lanzamiento', m4d:'Reporte final',
+    team_label:'// 07 — EQUIPO',
+    team_title:'Los <span class="vi">artistas</span>',
+    t1bio:'Artista digital activo en el ecosistema Kusama/Polkadot desde 2022. Creador de NFTs en Chaotic. Primer protocolo RWA de arte en Kusama. Formación en el Centro de Arte Semitiel, Cieza.',
+    t2bio:'Artista plástico con trayectoria consolidada en la pintura tradicional. Fundador del Centro de Arte Semitiel en Cieza, Murcia. Sus obras físicas son las primeras en el protocolo.',
+    con_label:'// 08 — CONTACTO',
+    con_title:'Ponte en <span class="ro">contacto</span>',
+    fl_name:'// NOMBRE', fl_email:'// EMAIL', fl_msg:'// MENSAJE', fl_send:'// ENVIAR MENSAJE',
+    ci_loc:'UBICACIÓN', ci_loc_val:'España · Cieza, Murcia',
+  },
+  en: {
+    nav_protocol:'// PROTOCOL', nav_gallery:'// GALLERY', nav_about:'// PROJECT',
+    nav_team:'// TEAM', nav_contact:'// CONTACT',
+    hero_eye:'// KSM ART & SOCIAL EXPERIMENTS INITIATIVE // RWA ART PROTOCOL',
+    hero_sub:'PHYSICAL ART <span>//</span> BLOCKCHAIN VERIFIED <span>//</span> KUSAMA NETWORK',
+    hero_btn1:'// SEE PROTOCOL', hero_btn2:'// CONNECT WALLET',
+    stat1_lab:'BUDGET', stat2_lab:'DURATION', stat2_sub:'INFRA → LAUNCH',
+    stat3_lab:'VALIDATED', stat3_sub:'REAL PHYSICAL DELIVERY', stat5_lab:'STORAGE',
+    stat6_lab:'ARTISTS', stat6_sub:'COLLABORATORS',
+    prot_label:'// 01 — PROTOCOL',
+    prot_title:'How the <span class="az">protocol</span> works',
+    f1t:'Wallet Connect + NFT Verify',
+    f1d:'Connect your wallet (Talisman, SubWallet, Nova). NFT ownership is cryptographically verified on Kusama Asset Hub.',
+    f2t:'Physical Claim',
+    f2d:'The NFT owner submits their shipping address. Data is encrypted off-chain. No intermediaries.',
+    f3t:'Escrow Lock',
+    f3d:'Funds are automatically locked in the decentralised escrow. Split model or seller deposit model.',
+    f4t:'Shipping → IPFS',
+    f4d:'The artist uploads photos, tracking and insurance. Evidence stored permanently on IPFS.',
+    f5t:'Delivery + COA',
+    f5d:'The buyer confirms receipt or the 7-day timer triggers automatic release. Certificate of Authenticity minted as NFT.',
+    f6t:'Payment Release',
+    f6d:'Payment released to the artist. Multi-signature dispute system available. Full cycle on blockchain.',
+    gal_label:'// 02 — GALLERY',
+    gal_title:'<span class="vi">Tokenised</span> artworks',
+    g1t:'FDaniel — Work #001', g1m:'KUSAMA ASSET HUB · DIGITAL ART',
+    g2t:'Semitiel — Painting #001', g2m:'TOKENISED PHYSICAL WORK · CIEZA',
+    g3t:'FDaniel — Generative #001', g3m:'GENERATIVE ART · KUSAMA',
+    g4t:'Semitiel — Painting #002', g4m:'TOKENISED PHYSICAL WORK · CIEZA',
+    g5t:'FDaniel — Kusama Collection', g5m:'NFT · CHAOTIC MARKETPLACE',
+    g6t:'Coming soon', g6m:'MORE WORKS ON THE WAY',
+    gal_note:'// Artwork images will be added soon. Placeholders will be replaced by real works.',
+    about_label:'// 03 — PROJECT',
+    about_title:'The <span class="vi">problem</span> and the <span class="ro">solution</span>',
+    c1l:'// PROBLEM', c1t:'NFTs without a physical bridge',
+    c1b:'In Kusama and Polkadot there is no reliable system to connect NFTs with real physical assets. Traditional artists cannot tokenise their work safely.',
+    c2l:'// SOLUTION', c2t:'Non-custodial escrow protocol',
+    c2b:'RWAgallery.art introduces cryptographic verification, decentralised escrow and IPFS-documented logistics. The first functional RWA art protocol in the Kusama ecosystem.',
+    c3l:'// VALIDATION', c3t:'It already works. Not theory.',
+    c3b:'An NFT sold and physically delivered to Croatia. Full cycle verified. The protocol has been tested in real conditions.',
+    wal_label:'// 04 — WALLET',
+    wal_title:'Connect your <span class="az">wallet</span>',
+    wal_head:'Verify your NFT ownership',
+    wal_sub:'CONNECT YOUR WALLET TO CLAIM YOUR PHYSICAL ARTWORK',
+    wal_status:'// NO WALLET CONNECTED',
+    bud_label:'// 05 — BUDGET',
+    b1:'Frontend (Next.js + wallets)', b2:'Generative engine',
+    b3:'Backend + security', b4:'Art + sound', b5:'Logistics',
+    btot_lab:'TOTAL · PAID IN DOT · KUSAMA ASSET HUB',
+    road_label:'// 06 — ROADMAP',
+    road_title:'Execution <span class="ro">plan</span>',
+    m1h:'MONTH 01', m1a:'Base infrastructure', m1b:'Wallet integration', m1c:'Public GitHub', m1d:'NFT verify on-chain',
+    m2h:'MONTH 02', m2a:'Generative engine', m2b:'Public gallery', m2c:'Web + identity', m2d:'First artworks',
+    m3h:'MONTH 03', m3a:'Escrow system', m3b:'PostgreSQL DB', m3c:'IPFS storage', m3d:'Multi-signature',
+    m4h:'MONTH 04', m4a:'Testing 10 works', m4b:'COA NFT', m4c:'Launch', m4d:'Final report',
+    team_label:'// 07 — TEAM',
+    team_title:'The <span class="vi">artists</span>',
+    t1bio:'Digital artist active in the Kusama/Polkadot ecosystem since 2022. NFT creator on Chaotic. Pioneer of the first RWA art protocol on Kusama. Artistic training at Centro de Arte Semitiel, Cieza.',
+    t2bio:'Plastic artist with a consolidated career in traditional painting. Founder of Centro de Arte Semitiel in Cieza, Murcia. His physical works are the first to be integrated into the RWAgallery.art protocol.',
+    con_label:'// 08 — CONTACT',
+    con_title:'Get in <span class="ro">touch</span>',
+    fl_name:'// NAME', fl_email:'// EMAIL', fl_msg:'// MESSAGE', fl_send:'// SEND MESSAGE',
+    ci_loc:'LOCATION', ci_loc_val:'Spain · Cieza, Murcia',
+  }
+};
+
+let lang = 'es';
+
+function toggleLang() {
+  lang = lang === 'es' ? 'en' : 'es';
+  document.querySelector('.lang-btn').textContent = lang === 'es' ? 'EN' : 'ES';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+  });
+}
+
+// ====== WALLET CONNECT (visual) ======
+function connectWallet(name) {
+  const st = document.getElementById('walletStatus');
+  st.textContent = `// Conectando con ${name}...`;
+  st.className = 'wallet-status';
+  setTimeout(() => {
+    st.innerHTML = `✓ ${name} conectado — función completa disponible en v1.0`;
+    st.className = 'wallet-status connected';
+  }, 1200);
+}
+
+// ====== CONTACT FORM ======
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const msg = document.getElementById('formMsg');
+  const btn = this.querySelector('.form-submit');
+  btn.textContent = '// ENVIANDO...';
+  try {
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      msg.textContent = '✓ Mensaje enviado correctamente.';
+      this.reset();
+    } else {
+      msg.textContent = '// Activa Formspree para recibir mensajes.';
+    }
+  } catch {
+    msg.textContent = '// Activa Formspree para recibir mensajes.';
+  }
+  btn.textContent = lang === 'es' ? '// ENVIAR MENSAJE' : '// SEND MESSAGE';
+});
+</script>
 </body>
 </html>
