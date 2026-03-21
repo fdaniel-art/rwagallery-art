@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal — RWAgallery.art</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --az:#00aaff;--az2:#0066cc;--az3:#003388;
+  --vi:#bb00ff;--vi3:#440055;
+  --ro:#ff0099;--ro3:#660033;
+  --bg:#020510;--bg2:#030a18;--bg3:#050515;
+  --border:#0a1a3a;--text:#4ab8ff;--text2:#1a4a88;--text3:#0a1a4a;
+  --mono:'Share Tech Mono',monospace;
+  --display:'Orbitron',monospace;
+  --body:'Exo 2',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.7;overflow-x:hidden}
+@keyframes scan{0%{top:-4px}100%{top:100vh}}
+@keyframes grid-pulse{0%,100%{opacity:.03}50%{opacity:.07}}
+.scanline{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(transparent,rgba(0,180,255,.07),transparent);animation:scan 8s linear infinite;pointer-events:none;z-index:999}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;animation:grid-pulse 6s ease-in-out infinite;pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,5,16,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;letter-spacing:2px;text-decoration:none}
+.nav-logo span{color:var(--az)}
+.back-btn{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--text2);text-decoration:none;border:1px solid var(--az3);padding:6px 16px;border-radius:2px;transition:all .2s}
+.back-btn:hover{color:var(--az);border-color:var(--az)}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:100px 40px 80px}
+.page-label{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--text3);margin-bottom:12px}
+.page-title{font-family:var(--display);font-size:clamp(24px,4vw,36px);font-weight:700;color:#fff;margin-bottom:8px}
+.page-title span{color:var(--az)}
+.page-sub{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;margin-bottom:40px}
+.divider{height:1px;background:linear-gradient(90deg,var(--az3),var(--vi3),var(--ro3),transparent);margin-bottom:48px}
+.toc{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:24px;margin-bottom:48px}
+.toc-title{font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--text3);margin-bottom:16px}
+.toc a{display:block;font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;padding:4px 0;border-bottom:1px solid var(--bg3);transition:color .2s}
+.toc a:last-child{border:none}
+.toc a:hover{color:var(--az)}
+.toc a span{color:var(--az3);margin-right:8px}
+.doc-section{margin-bottom:48px}
+.doc-section h2{font-family:var(--display);font-size:16px;font-weight:700;color:var(--az);margin-bottom:6px;padding-bottom:8px;border-bottom:1px solid var(--az3)}
+.doc-section h3{font-family:var(--mono);font-size:11px;color:var(--vi);letter-spacing:2px;margin:20px 0 8px}
+.doc-section p{font-family:var(--body);font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:12px}
+.doc-section ul{margin:8px 0 16px 20px}
+.doc-section ul li{font-family:var(--body);font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:6px}
+.doc-section ul li::marker{color:var(--az)}
+.highlight{background:var(--bg2);border-left:2px solid var(--az);padding:12px 16px;border-radius:0 4px 4px 0;margin:16px 0;font-family:var(--mono);font-size:11px;color:var(--az2)}
+.highlight.vi{border-color:var(--vi);color:var(--vi)}
+.highlight.ro{border-color:var(--ro);color:var(--ro)}
+.lang-tabs{display:flex;gap:8px;margin-bottom:32px}
+.lang-tab{font-family:var(--mono);font-size:10px;letter-spacing:2px;padding:6px 16px;border:1px solid var(--border);border-radius:2px;cursor:pointer;background:none;color:var(--text2);transition:all .2s}
+.lang-tab.active{border-color:var(--az);color:var(--az);background:rgba(0,100,255,.06)}
+.lang-content{display:none}
+.lang-content.active{display:block}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);background:var(--bg2);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-logo{font-family:var(--display);font-size:13px;font-weight:700;color:#fff}
+.foot-logo span{color:var(--az)}
+.foot-info{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="scanline"></div>
+<nav>
+  <a href="index.html" class="nav-logo">RWA<span>gallery</span>.art</a>
+  <a href="index.html" class="back-btn">← VOLVER</a>
+</nav>
+
+<div class="wrap">
+  <div class="page-label">// LEGAL</div>
+  <h1 class="page-title">Términos, Privacidad <span>&amp;</span> Cookies</h1>
+  <div class="page-sub">ÚLTIMA ACTUALIZACIÓN: MARZO 2025 · JURISDICCIÓN: ESPAÑA / UNIÓN EUROPEA</div>
+  <div class="divider"></div>
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="showLang('es')">🇪🇸 ESPAÑOL</button>
+    <button class="lang-tab" onclick="showLang('en')">🇬🇧 ENGLISH</button>
+  </div>
+
+  <!-- ===== ESPAÑOL ===== -->
+  <div class="lang-content active" id="content-es">
+    <div class="toc">
+      <div class="toc-title">// CONTENIDO</div>
+      <a href="#tc-es"><span>01</span>Términos y Condiciones</a>
+      <a href="#privacy-es"><span>02</span>Política de Privacidad (RGPD)</a>
+      <a href="#cookies-es"><span>03</span>Política de Cookies</a>
+      <a href="#commissions-es"><span>04</span>Modelo de Comisiones</a>
+      <a href="#disputes-es"><span>05</span>Resolución de Disputas</a>
+    </div>
+
+    <div class="doc-section" id="tc-es">
+      <h2>01 // Términos y Condiciones</h2>
+      <h3>1.1 IDENTIFICACIÓN DEL SERVICIO</h3>
+      <p>RWAgallery.art es un protocolo descentralizado de verificación y entrega de activos artísticos del mundo real (RWA) que opera sobre la red blockchain Kusama. El servicio es operado por FDaniel, con dirección de contacto rwagallery@proton.me.</p>
+      <div class="highlight">El uso de este servicio implica la aceptación íntegra de los presentes Términos y Condiciones.</div>
+
+      <h3>1.2 OBJETO DEL SERVICIO</h3>
+      <p>RWAgallery.art facilita:</p>
+      <ul>
+        <li>La verificación criptográfica de propiedad de NFTs en Kusama Asset Hub.</li>
+        <li>La conexión entre propietarios de NFTs y artistas para la entrega física de obras de arte.</li>
+        <li>Un sistema de escrow descentralizado para garantizar el pago y la entrega.</li>
+        <li>La emisión de Certificados de Autenticidad (COA) como NFTs vinculados a la obra física.</li>
+      </ul>
+
+      <h3>1.3 USUARIOS Y ARTISTAS</h3>
+      <p>Pueden usar el servicio personas mayores de 18 años. Los artistas que deseen registrarse en el directorio deben solicitarlo mediante el formulario habilitado. RWAgallery.art se reserva el derecho de admisión y puede rechazar solicitudes sin necesidad de justificación.</p>
+
+      <h3>1.4 COMISIONES Y PAGOS</h3>
+      <p>RWAgallery.art aplica una comisión del 3% sobre el valor total de cada operación, repartida de la siguiente forma:</p>
+      <ul>
+        <li><strong style="color:#00aaff">1.5%</strong> a cargo del comprador, añadido al precio final.</li>
+        <li><strong style="color:#bb00ff">1.5%</strong> a cargo del vendedor, descontado del pago recibido.</li>
+      </ul>
+      <p>Los pagos se realizan en DOT/KSM sobre Kusama Asset Hub. RWAgallery.art no custodia fondos en ningún momento — el escrow es descentralizado y no custodial.</p>
+
+      <h3>1.5 ESCROW Y ENTREGA</h3>
+      <p>El sistema de escrow funciona de la siguiente manera:</p>
+      <ul>
+        <li>El comprador deposita el precio de la obra + costes de envío + 1.5% de comisión.</li>
+        <li>El vendedor deposita una garantía equivalente al 10-20% del valor de la obra.</li>
+        <li>Los fondos se liberan automáticamente tras confirmación de entrega por el comprador, o tras 7 días sin disputa.</li>
+        <li>En caso de disputa, se activa el sistema de resolución multi-firma.</li>
+      </ul>
+
+      <h3>1.6 LIMITACIÓN DE RESPONSABILIDAD</h3>
+      <p>RWAgallery.art actúa como facilitador tecnológico. No es responsable de:</p>
+      <ul>
+        <li>Daños o pérdidas durante el envío de obras físicas.</li>
+        <li>Fluctuaciones del valor de los tokens DOT/KSM.</li>
+        <li>Errores en wallets o direcciones proporcionadas por los usuarios.</li>
+        <li>Incumplimientos por parte de artistas o compradores.</li>
+      </ul>
+      <div class="highlight ro">El uso de blockchain implica riesgos inherentes que el usuario acepta al conectar su wallet.</div>
+
+      <h3>1.7 PROPIEDAD INTELECTUAL</h3>
+      <p>Los artistas conservan todos los derechos de propiedad intelectual sobre sus obras. RWAgallery.art no adquiere ningún derecho sobre las obras registradas en la plataforma. El COA (Certificado de Autenticidad) certifica la autenticidad pero no transfiere derechos de autor.</p>
+
+      <h3>1.8 MODIFICACIONES</h3>
+      <p>RWAgallery.art se reserva el derecho de modificar estos términos con previo aviso de 30 días. El uso continuado del servicio implica la aceptación de las nuevas condiciones.</p>
+    </div>
+
+    <div class="doc-section" id="privacy-es">
+      <h2>02 // Política de Privacidad (RGPD)</h2>
+      <div class="highlight vi">Cumplimos con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos (LOPDGDD).</div>
+
+      <h3>2.1 RESPONSABLE DEL TRATAMIENTO</h3>
+      <p>Responsable: FDaniel · Email: rwagallery@proton.me · Web: rwagallery.art</p>
+
+      <h3>2.2 DATOS QUE RECOGEMOS</h3>
+      <ul>
+        <li><strong style="color:#00aaff">Dirección de wallet</strong> — para verificar propiedad de NFTs. Es pública en blockchain.</li>
+        <li><strong style="color:#00aaff">Nombre y email</strong> — cuando rellenas formularios de contacto o registro.</li>
+        <li><strong style="color:#00aaff">Dirección postal</strong> — solo cuando se solicita entrega física. Se cifra y elimina tras la entrega.</li>
+        <li><strong style="color:#00aaff">Datos de artistas</strong> — bio, foto, redes, enlaces. Públicos por naturaleza del servicio.</li>
+      </ul>
+
+      <h3>2.3 FINALIDAD Y BASE LEGAL</h3>
+      <ul>
+        <li>Gestión del protocolo escrow — base legal: ejecución de contrato.</li>
+        <li>Comunicaciones sobre el servicio — base legal: interés legítimo.</li>
+        <li>Directorio de artistas — base legal: consentimiento explícito.</li>
+      </ul>
+
+      <h3>2.4 CONSERVACIÓN DE DATOS</h3>
+      <ul>
+        <li>Direcciones postales: eliminadas tras confirmación de entrega.</li>
+        <li>Emails de contacto: máximo 2 años o hasta solicitud de eliminación.</li>
+        <li>Datos en blockchain (wallets): permanentes por naturaleza de la tecnología.</li>
+      </ul>
+
+      <h3>2.5 TUS DERECHOS</h3>
+      <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, portabilidad y oposición escribiendo a rwagallery@proton.me. Responderemos en un plazo máximo de 30 días.</p>
+
+      <h3>2.6 TRANSFERENCIAS INTERNACIONALES</h3>
+      <p>Los datos almacenados en IPFS son de naturaleza descentralizada y global. Los datos off-chain se almacenan en servidores dentro de la UE. No realizamos transferencias comerciales de datos a terceros.</p>
+    </div>
+
+    <div class="doc-section" id="cookies-es">
+      <h2>03 // Política de Cookies</h2>
+      <p>RWAgallery.art utiliza únicamente cookies técnicas estrictamente necesarias para el funcionamiento del servicio. No utilizamos cookies de seguimiento, publicidad ni analítica de terceros.</p>
+      <h3>COOKIES QUE USAMOS</h3>
+      <ul>
+        <li><strong style="color:#00aaff">lang</strong> — Guarda tu preferencia de idioma (ES/EN). Duración: sesión.</li>
+        <li><strong style="color:#00aaff">wallet_session</strong> — Mantiene la sesión de wallet conectada. Duración: sesión.</li>
+      </ul>
+      <div class="highlight">Al ser cookies técnicas necesarias, no requieren consentimiento previo según la normativa europea.</div>
+    </div>
+
+    <div class="doc-section" id="commissions-es">
+      <h2>04 // Modelo de Comisiones</h2>
+      <h3>ESTRUCTURA</h3>
+      <ul>
+        <li>Comisión total: <strong style="color:#00aaff">3%</strong> del valor de la obra.</li>
+        <li>Comprador: paga <strong style="color:#00aaff">1.5%</strong> adicional sobre el precio.</li>
+        <li>Vendedor: recibe el precio menos <strong style="color:#bb00ff">1.5%</strong>.</li>
+        <li>Costes de envío y seguro: a cargo del comprador, gestionados por el vendedor.</li>
+      </ul>
+      <h3>EJEMPLO PRÁCTICO</h3>
+      <ul>
+        <li>Obra valorada en: <strong style="color:#fff">100 KSM</strong></li>
+        <li>Comprador deposita: <strong style="color:#00aaff">101.5 KSM</strong> + envío</li>
+        <li>Vendedor recibe: <strong style="color:#bb00ff">98.5 KSM</strong></li>
+        <li>RWAgallery recibe: <strong style="color:#ff0099">3 KSM</strong></li>
+      </ul>
+    </div>
+
+    <div class="doc-section" id="disputes-es">
+      <h2>05 // Resolución de Disputas</h2>
+      <p>En caso de disputa entre comprador y vendedor:</p>
+      <ul>
+        <li>El usuario abre una disputa desde la plataforma en un plazo máximo de 7 días tras la entrega esperada.</li>
+        <li>RWAgallery.art actúa como mediador neutral.</li>
+        <li>Se requiere evidencia: fotos, tracking, comunicaciones.</li>
+        <li>La resolución se ejecuta mediante multi-firma on-chain en un plazo de 14 días.</li>
+        <li>Si no hay acuerdo, se puede acudir a arbitraje conforme a la normativa española de consumo.</li>
+      </ul>
+      <div class="highlight vi">La ley aplicable es la española. Los juzgados competentes son los del domicilio del consumidor según normativa UE.</div>
+    </div>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <div class="lang-content" id="content-en">
+    <div class="toc">
+      <div class="toc-title">// CONTENTS</div>
+      <a href="#tc-en"><span>01</span>Terms &amp; Conditions</a>
+      <a href="#privacy-en"><span>02</span>Privacy Policy (GDPR)</a>
+      <a href="#cookies-en"><span>03</span>Cookie Policy</a>
+      <a href="#commissions-en"><span>04</span>Commission Model</a>
+      <a href="#disputes-en"><span>05</span>Dispute Resolution</a>
+    </div>
+
+    <div class="doc-section" id="tc-en">
+      <h2>01 // Terms &amp; Conditions</h2>
+      <h3>1.1 SERVICE IDENTIFICATION</h3>
+      <p>RWAgallery.art is a decentralised protocol for the verification and delivery of real-world art assets (RWA) operating on the Kusama blockchain network. The service is operated by FDaniel, contact: rwagallery@proton.me.</p>
+      <div class="highlight">Use of this service implies full acceptance of these Terms and Conditions.</div>
+
+      <h3>1.2 PURPOSE</h3>
+      <p>RWAgallery.art facilitates:</p>
+      <ul>
+        <li>Cryptographic verification of NFT ownership on Kusama Asset Hub.</li>
+        <li>Connection between NFT owners and artists for physical delivery of artworks.</li>
+        <li>A decentralised escrow system to guarantee payment and delivery.</li>
+        <li>Issuance of Certificates of Authenticity (COA) as NFTs linked to the physical work.</li>
+      </ul>
+
+      <h3>1.3 USERS AND ARTISTS</h3>
+      <p>The service is available to persons aged 18 and over. Artists wishing to join the directory must apply via the registration form. RWAgallery.art reserves the right of admission.</p>
+
+      <h3>1.4 COMMISSIONS AND PAYMENTS</h3>
+      <p>RWAgallery.art charges a 3% commission on the total value of each transaction:</p>
+      <ul>
+        <li><strong style="color:#00aaff">1.5%</strong> paid by the buyer, added to the final price.</li>
+        <li><strong style="color:#bb00ff">1.5%</strong> paid by the seller, deducted from the payment received.</li>
+      </ul>
+      <p>Payments are made in DOT/KSM on Kusama Asset Hub. RWAgallery.art does not hold funds at any time — the escrow is decentralised and non-custodial.</p>
+
+      <h3>1.5 ESCROW AND DELIVERY</h3>
+      <ul>
+        <li>Buyer deposits: artwork price + shipping costs + 1.5% commission.</li>
+        <li>Seller deposits: guarantee of 10–20% of the artwork value.</li>
+        <li>Funds released automatically after buyer confirms delivery, or after 7 days without dispute.</li>
+        <li>In case of dispute, the multi-signature resolution system is activated.</li>
+      </ul>
+
+      <h3>1.6 LIMITATION OF LIABILITY</h3>
+      <p>RWAgallery.art acts as a technology facilitator and is not responsible for damage during shipping, token value fluctuations, wallet errors, or non-compliance by artists or buyers.</p>
+      <div class="highlight ro">Use of blockchain implies inherent risks accepted by the user upon connecting their wallet.</div>
+
+      <h3>1.7 INTELLECTUAL PROPERTY</h3>
+      <p>Artists retain all intellectual property rights over their works. The COA certifies authenticity but does not transfer copyright.</p>
+    </div>
+
+    <div class="doc-section" id="privacy-en">
+      <h2>02 // Privacy Policy (GDPR)</h2>
+      <div class="highlight vi">We comply with EU Regulation 2016/679 (GDPR) and applicable Spanish data protection law.</div>
+
+      <h3>2.1 DATA CONTROLLER</h3>
+      <p>FDaniel · rwagallery@proton.me · rwagallery.art</p>
+
+      <h3>2.2 DATA WE COLLECT</h3>
+      <ul>
+        <li>Wallet address — to verify NFT ownership. Public on blockchain.</li>
+        <li>Name and email — when filling in contact or registration forms.</li>
+        <li>Postal address — only for physical delivery. Encrypted and deleted after delivery.</li>
+        <li>Artist data — bio, photo, social links. Public by nature of the service.</li>
+      </ul>
+
+      <h3>2.3 YOUR RIGHTS</h3>
+      <p>You may exercise your rights of access, rectification, deletion, portability and objection by writing to rwagallery@proton.me. We will respond within 30 days.</p>
+    </div>
+
+    <div class="doc-section" id="cookies-en">
+      <h2>03 // Cookie Policy</h2>
+      <p>RWAgallery.art uses only strictly necessary technical cookies. We do not use tracking, advertising or third-party analytics cookies.</p>
+      <ul>
+        <li><strong style="color:#00aaff">lang</strong> — Stores your language preference (ES/EN). Duration: session.</li>
+        <li><strong style="color:#00aaff">wallet_session</strong> — Maintains connected wallet session. Duration: session.</li>
+      </ul>
+    </div>
+
+    <div class="doc-section" id="commissions-en">
+      <h2>04 // Commission Model</h2>
+      <ul>
+        <li>Total commission: <strong style="color:#00aaff">3%</strong> of artwork value.</li>
+        <li>Buyer pays: <strong style="color:#00aaff">1.5%</strong> on top of the price.</li>
+        <li>Seller receives: price minus <strong style="color:#bb00ff">1.5%</strong>.</li>
+      </ul>
+      <h3>PRACTICAL EXAMPLE</h3>
+      <ul>
+        <li>Artwork valued at: <strong style="color:#fff">100 KSM</strong></li>
+        <li>Buyer deposits: <strong style="color:#00aaff">101.5 KSM</strong> + shipping</li>
+        <li>Seller receives: <strong style="color:#bb00ff">98.5 KSM</strong></li>
+        <li>RWAgallery receives: <strong style="color:#ff0099">3 KSM</strong></li>
+      </ul>
+    </div>
+
+    <div class="doc-section" id="disputes-en">
+      <h2>05 // Dispute Resolution</h2>
+      <ul>
+        <li>User opens dispute within 7 days of expected delivery.</li>
+        <li>RWAgallery.art acts as neutral mediator.</li>
+        <li>Evidence required: photos, tracking, communications.</li>
+        <li>Resolution via on-chain multi-signature within 14 days.</li>
+      </ul>
+      <div class="highlight vi">Applicable law: Spanish law. Competent courts: consumer's domicile per EU regulation.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-logo">RWA<span>gallery</span>.art</div>
+  <div class="foot-info">rwagallery@proton.me · KSM ART INITIATIVE · EST. 2022</div>
+</footer>
+
+<script>
+function showLang(l) {
+  document.querySelectorAll('.lang-content').forEach(function(el){ el.classList.remove('active'); });
+  document.querySelectorAll('.lang-tab').forEach(function(el){ el.classList.remove('active'); });
+  document.getElementById('content-'+l).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
