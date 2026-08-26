@@ -3,48 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NF Gallery — Arte & Blockchain</title>
+    <title>RWAgallery.art — Transmutation Protocol</title>
 
-    <!-- Estilos base -->
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: #111;
-            color: #eee;
+            background: #050509;
+            color: #f5f5f5;
         }
 
         header {
-            padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid #222;
             background: #000;
-            border-bottom: 1px solid #333;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2rem;
+        .logo {
+            font-weight: bold;
             letter-spacing: 2px;
         }
 
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        button.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 1000px;
+            margin: 32px auto;
+            padding: 0 16px;
         }
 
         .card {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 8px;
+            background: #111118;
             border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
             margin-bottom: 20px;
         }
 
-        a {
-            color: #ff3d81;
-            text-decoration: none;
+        .section-title {
+            margin-top: 0;
+        }
+
+        .wallets, .logins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -52,28 +82,115 @@
 <body>
 
 <header>
-    <h1>NF Gallery</h1>
-    <p>Arte físico + Identidad criptográfica</p>
+    <div class="logo">RWAgallery.art</div>
+
+    <div class="lang-switch">
+        <button id="btn-es">ES</button>
+        <button id="btn-en">EN</button>
+    </div>
 </header>
 
 <div class="container">
 
+    <!-- Introducción protocolo -->
     <div class="card">
-        <h2>Bienvenido</h2>
-        <p>Esta es la nueva base de tu web NF Gallery. Desde aquí construiremos la plataforma de arte + blockchain.</p>
+        <h1 data-i18n="title">Protocolo de transmutación RWA</h1>
+        <p data-i18n="subtitle">
+            Puente entre arte físico y ecosistema Polkadot/Ethereum. Esta interfaz está preparada para evolucionar a web 3.0.
+        </p>
     </div>
 
+    <!-- Sección wallets (desactivadas) -->
     <div class="card">
-        <h2>Próximos módulos</h2>
-        <ul>
-            <li>Galería de obras</li>
-            <li>Verificación RWA</li>
-            <li>Transmutación NFT → Obra física</li>
-            <li>Panel del artista</li>
-        </ul>
+        <h2 class="section-title" data-i18n="wallets_title">Wallets (Polkadot & Ethereum) — desactivadas</h2>
+        <p data-i18n="wallets_desc">
+            Aquí aparecerán las conexiones reales a tus wallets. De momento solo mostramos las opciones previstas.
+        </p>
+
+        <div class="wallets">
+            <button class="disabled">
+                <span data-i18n="wallet_polkadot">Polkadot: Nova / Talisman / Subwallet</span>
+                <div class="tag">web3 (próximamente)</div>
+            </button>
+
+            <button class="disabled">
+                <span data-i18n="wallet_ethereum">Ethereum: Metamask / Rabby</span>
+                <div class="tag">web3 (próximamente)</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sección registro clásico (Google, Apple, email) -->
+    <div class="card">
+        <h2 class="section-title" data-i18n="login_title">Registro y acceso (privacidad primero)</h2>
+        <p data-i18n="login_desc">
+            Podrás acceder con cuentas tradicionales manteniendo la seguridad y la mínima recolección de datos.
+        </p>
+
+        <div class="logins">
+            <button class="disabled">
+                <span data-i18n="login_google">Acceder con Google</span>
+                <div class="tag">desactivado (diseño)</div>
+            </button>
+
+            <button class="disabled">
+                <span data-i18n="login_apple">Acceder con Apple</span>
+                <div class="tag">desactivado (diseño)</div>
+            </button>
+
+            <button class="disabled">
+                <span data-i18n="login_email">Acceder con correo electrónico</span>
+                <div class="tag">desactivado (diseño)</div>
+            </button>
+        </div>
     </div>
 
 </div>
+
+<script>
+    const translations = {
+        es: {
+            title: "Protocolo de transmutación RWA",
+            subtitle: "Puente entre arte físico y ecosistema Polkadot/Ethereum. Esta interfaz está preparada para evolucionar a web 3.0.",
+            wallets_title: "Wallets (Polkadot & Ethereum) — desactivadas",
+            wallets_desc: "Aquí aparecerán las conexiones reales a tus wallets. De momento solo mostramos las opciones previstas.",
+            wallet_polkadot: "Polkadot: Nova / Talisman / Subwallet",
+            wallet_ethereum: "Ethereum: Metamask / Rabby",
+            login_title: "Registro y acceso (privacidad primero)",
+            login_desc: "Podrás acceder con cuentas tradicionales manteniendo la seguridad y la mínima recolección de datos.",
+            login_google: "Acceder con Google",
+            login_apple: "Acceder con Apple",
+            login_email: "Acceder con correo electrónico"
+        },
+        en: {
+            title: "RWA Transmutation Protocol",
+            subtitle: "Bridge between physical art and the Polkadot/Ethereum ecosystem. This interface is prepared to evolve into Web 3.0.",
+            wallets_title: "Wallets (Polkadot & Ethereum) — disabled",
+            wallets_desc: "Here the real wallet connections will appear. For now we only show the planned options.",
+            wallet_polkadot: "Polkadot: Nova / Talisman / Subwallet",
+            wallet_ethereum: "Ethereum: Metamask / Rabby",
+            login_title: "Sign-in and access (privacy first)",
+            login_desc: "You will be able to log in with traditional accounts while keeping security and minimal data collection.",
+            login_google: "Sign in with Google",
+            login_apple: "Sign in with Apple",
+            login_email: "Sign in with email"
+        }
+    };
+
+    function setLanguage(lang) {
+        const dict = translations[lang];
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            el.textContent = dict[key];
+        });
+    }
+
+    document.getElementById("btn-es").addEventListener("click", () => setLanguage("es"));
+    document.getElementById("btn-en").addEventListener("click", () => setLanguage("en"));
+
+    // Idioma por defecto: español
+    setLanguage("es");
+</script>
 
 </body>
 </html>
