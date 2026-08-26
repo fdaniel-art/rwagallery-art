@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Artistas</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .artist-card {
+            background: #111118;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .artist-name {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .artist-style {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .artist-status {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+</div>
+
+<div id="artists-content">
+
+    <!-- ESPAÑOL -->
+    <div id="artists-es">
+
+        <h1>Artistas del Protocolo</h1>
+        <p>
+            Este listado muestra los artistas que participan en RWAgallery.art, con obras físicas vinculadas a identidad criptográfica
+            y preparados para integrarse en el ecosistema Web3.
+        </p>
+
+        <div class="artists-grid" id="artists-grid-es">
+            <!-- Se rellena por JavaScript -->
+        </div>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="artists-en" style="display:none;">
+
+        <h1>Protocol Artists</h1>
+        <p>
+            This list shows the artists participating in RWAgallery.art, with physical artworks linked to cryptographic identity
+            and prepared to integrate into the Web3 ecosystem.
+        </p>
+
+        <div class="artists-grid" id="artists-grid-en">
+            <!-- Filled by JavaScript -->
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const artists = [
+        {
+            id: 1,
+            name_es: "FDaniel",
+            name_en: "FDaniel",
+            style_es: "Arte contemporáneo, luz y materia",
+            style_en: "Contemporary art, light and matter",
+            status_es: "Obras físicas vinculadas a NFTs (RWA en proceso)",
+            status_en: "Physical artworks linked to NFTs (RWA in progress)"
+        },
+        {
+            id: 2,
+            name_es: "Artista Invitado I",
+            name_en: "Guest Artist I",
+            style_es: "Exploración de paisaje y arquitectura rural",
+            style_en: "Exploration of landscape and rural architecture",
+            status_es: "Preparando vinculación a identidad criptográfica",
+            status_en: "Preparing linkage to cryptographic identity"
+        },
+        {
+            id: 3,
+            name_es: "Artista Invitado II",
+            name_en: "Guest Artist II",
+            style_es: "Intervenciones mixtas físico-digital",
+            style_en: "Mixed physical-digital interventions",
+            status_es: "Obras en fase de certificación",
+            status_en: "Artworks in certification phase"
+        }
+    ];
+
+    function renderArtists(lang) {
+        const gridEs = document.getElementById("artists-grid-es");
+        const gridEn = document.getElementById("artists-grid-en");
+
+        gridEs.innerHTML = "";
+        gridEn.innerHTML = "";
+
+        artists.forEach(artist => {
+            const cardEs = document.createElement("div");
+            cardEs.className = "artist-card";
+            cardEs.innerHTML = `
+                <div class="artist-name">${artist.name_es}</div>
+                <div class="artist-style">${artist.style_es}</div>
+                <div class="artist-status">${artist.status_es}</div>
+            `;
+            gridEs.appendChild(cardEs);
+
+            const cardEn = document.createElement("div");
+            cardEn.className = "artist-card";
+            cardEn.innerHTML = `
+                <div class="artist-name">${artist.name_en}</div>
+                <div class="artist-style">${artist.style_en}</div>
+                <div class="artist-status">${artist.status_en}</div>
+            `;
+            gridEn.appendChild(cardEn);
+        });
+    }
+
+    document.getElementById("btn-es").addEventListener("click", () => {
+        document.getElementById("artists-es").style.display = "block";
+        document.getElementById("artists-en").style.display = "none";
+    });
+
+    document.getElementById("btn-en").addEventListener("click", () => {
+        document.getElementById("artists-es").style.display = "none";
+        document.getElementById("artists-en").style.display = "block";
+    });
+
+    // Render inicial
+    renderArtists("es");
+</script>
+
+</body>
+</html>
