@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Política de Privacidad</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+</div>
+
+<div id="privacy-content">
+
+    <!-- ESPAÑOL -->
+    <div id="privacy-es">
+
+        <h1>Política de Privacidad</h1>
+        <p>
+            La presente Política de Privacidad regula el tratamiento de datos personales realizado por RWAgallery.art,
+            plataforma dedicada a la exhibición, certificación y trazabilidad de obras de arte físico vinculadas a identidad criptográfica.
+            El tratamiento de datos se realiza conforme al Reglamento General de Protección de Datos (RGPD), la Ley Orgánica 3/2018 (LOPDGDD),
+            la Ley de Servicios Digitales (DSA), y el Reglamento Europeo de Mercados de Criptoactivos (MiCA).
+        </p>
+
+        <h2>1. Responsable del Tratamiento</h2>
+        <p>
+            Responsable: RWAgallery.art  
+            Actividad: Plataforma de arte físico + identidad criptográfica  
+            Ubicación legal: España  
+            Contacto: privacidad@rwagallery.art  
+        </p>
+
+        <h2>2. Datos que Recogemos</h2>
+        <p>RWAgallery.art aplica estrictos principios de minimización de datos. Recogemos únicamente:</p>
+        <ul>
+            <li>Correo electrónico (para registro opcional).</li>
+            <li>Nombre opcional proporcionado por el usuario.</li>
+            <li>Preferencias de idioma.</li>
+            <li>Datos técnicos mínimos (IP anonimizada, navegador, dispositivo).</li>
+        </ul>
+        <p>
+            No recogemos datos sensibles.  
+            No almacenamos claves privadas, frases semilla ni información vinculada a wallets.
+        </p>
+
+        <h2>3. Registro y Autenticación</h2>
+        <p>
+            El acceso mediante Google, Apple o correo electrónico se realiza bajo principios de privacidad reforzada.
+            La conexión con wallets (Nova, Talisman, Subwallet, Metamask, Rabby) no implica cesión de claves privadas ni almacenamiento de datos sensibles.
+            RWAgallery.art nunca solicitará frases semilla ni claves privadas.
+        </p>
+
+        <h2>4. Finalidad del Tratamiento</h2>
+        <p>Los datos se utilizan exclusivamente para:</p>
+        <ul>
+            <li>Gestionar el acceso a la plataforma.</li>
+            <li>Mostrar contenido personalizado según idioma.</li>
+            <li>Garantizar la seguridad y funcionamiento del sitio.</li>
+        </ul>
+
+        <h2>5. Base Jurídica</h2>
+        <p>
+            El tratamiento se basa en el consentimiento del usuario (art. 6.1.a RGPD) y en el interés legítimo de garantizar la seguridad del servicio (art. 6.1.f RGPD).
+        </p>
+
+        <h2>6. Conservación de Datos</h2>
+        <p>
+            Los datos se conservan únicamente durante el tiempo necesario para la prestación del servicio.
+            El usuario puede solicitar la eliminación total de sus datos en cualquier momento.
+        </p>
+
+        <h2>7. Derechos del Usuario</h2>
+        <p>El usuario puede ejercer los siguientes derechos:</p>
+        <ul>
+            <li>Acceso</li>
+            <li>Rectificación</li>
+            <li>Supresión</li>
+            <li>Limitación del tratamiento</li>
+            <li>Portabilidad</li>
+            <li>Oposición</li>
+        </ul>
+        <p>Para ejercerlos: privacidad@rwagallery.art</p>
+
+        <h2>8. Transferencias Internacionales</h2>
+        <p>
+            RWAgallery.art no realiza transferencias internacionales de datos fuera de la UE.
+            En caso de utilizar servicios externos (Google/Apple), estos cumplen con el RGPD y las cláusulas contractuales tipo.
+        </p>
+
+        <h2>9. Seguridad</h2>
+        <p>
+            Aplicamos medidas técnicas y organizativas avanzadas:
+        </p>
+        <ul>
+            <li>Cifrado TLS/HTTPS.</li>
+            <li>Anonimización de IP.</li>
+            <li>Protección contra ataques automatizados.</li>
+            <li>No custodia de claves privadas.</li>
+        </ul>
+
+        <h2>10. Criptoactivos y MiCA</h2>
+        <p>
+            RWAgallery.art no presta servicios de custodia ni emite tokens regulados.
+            Los NFTs vinculados a obras físicas se consideran criptoactivos no fungibles según MiCA.
+            No se tratan datos financieros ni se realizan actividades sujetas a licencia.
+        </p>
+
+        <h2>11. Actualizaciones</h2>
+        <p>
+            Esta política puede actualizarse para cumplir con nuevas normativas europeas o españolas.
+            La versión vigente estará siempre disponible en esta página.
+        </p>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="privacy-en" style="display:none;">
+
+        <h1>Privacy Policy</h1>
+        <p>
+            This Privacy Policy governs the processing of personal data carried out by RWAgallery.art,
+            a platform dedicated to the exhibition, certification and traceability of physical artworks linked to cryptographic identity.
+            Processing is carried out in accordance with the GDPR, the Spanish LOPDGDD, the Digital Services Act (DSA),
+            and the European Markets in Crypto-Assets Regulation (MiCA).
+        </p>
+
+        <h2>1. Data Controller</h2>
+        <p>
+            Controller: RWAgallery.art  
+            Activity: Physical art + cryptographic identity platform  
+            Legal location: Spain  
+            Contact: privacy@rwagallery.art  
+        </p>
+
+        <h2>2. Data We Collect</h2>
+        <p>RWAgallery.art applies strict data minimization principles. We only collect:</p>
+        <ul>
+            <li>Email address (optional registration).</li>
+            <li>Optional user-provided name.</li>
+            <li>Language preferences.</li>
+            <li>Minimal technical data (anonymized IP, browser, device).</li>
+        </ul>
+        <p>
+            We do not collect sensitive data.  
+            We do not store private keys, seed phrases or wallet-related sensitive information.
+        </p>
+
+        <h2>3. Registration and Authentication</h2>
+        <p>
+            Access via Google, Apple or email follows strict privacy principles.
+            Wallet connections (Nova, Talisman, Subwallet, Metamask, Rabby) do not involve sharing private keys or storing sensitive information.
+            RWAgallery.art will never request seed phrases or private keys.
+        </p>
+
+        <h2>4. Purpose of Processing</h2>
+        <p>Data is used exclusively to:</p>
+        <ul>
+            <li>Manage access to the platform.</li>
+            <li>Provide language-based customization.</li>
+            <li>Ensure security and proper functioning.</li>
+        </ul>
+
+        <h2>5. Legal Basis</h2>
+        <p>
+            Processing is based on user consent (Art. 6.1.a GDPR) and the legitimate interest of ensuring service security (Art. 6.1.f GDPR).
+        </p>
+
+        <h2>6. Data Retention</h2>
+        <p>
+            Data is retained only for the time necessary to provide the service.
+            Users may request full deletion of their data at any time.
+        </p>
+
+        <h2>7. User Rights</h2>
+        <p>Users may exercise the following rights:</p>
+        <ul>
+            <li>Access</li>
+            <li>Rectification</li>
+            <li>Erasure</li>
+            <li>Restriction</li>
+            <li>Portability</li>
+            <li>Objection</li>
+        </ul>
+        <p>To exercise them: privacy@rwagallery.art</p>
+
+        <h2>8. International Transfers</h2>
+        <p>
+            RWAgallery.art does not perform international transfers outside the EU.
+            External services (Google/Apple) comply with GDPR and Standard Contractual Clauses.
+        </p>
+
+        <h2>9. Security</h2>
+        <p>
+            We apply advanced technical and organizational measures:
+        </p>
+        <ul>
+            <li>TLS/HTTPS encryption.</li>
+            <li>IP anonymization.</li>
+            <li>Protection against automated attacks.</li>
+            <li>No custody of private keys.</li>
+        </ul>
+
+        <h2>10. Crypto-Assets and MiCA</h2>
+        <p>
+            RWAgallery.art does not provide custody services nor issue regulated tokens.
+            NFTs linked to physical artworks are considered non-fungible crypto-assets under MiCA.
+            No financial data is processed and no licensed activities are performed.
+        </p>
+
+        <h2>11. Updates</h2>
+        <p>
+            This policy may be updated to comply with new EU or Spanish regulations.
+            The current version will always be available on this page.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("btn-es").addEventListener("click", () => {
+        document.getElementById("privacy-es").style.display = "block";
+        document.getElementById("privacy-en").style.display = "none";
+    });
+
+    document.getElementById("btn-en").addEventListener("click", () => {
+        document.getElementById("privacy-es").style.display = "none";
+        document.getElementById("privacy-en").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
