@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Términos y Condiciones</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+</div>
+
+<div id="terms-content">
+
+    <!-- ESPAÑOL -->
+    <div id="terms-es">
+
+        <h1>Términos y Condiciones</h1>
+        <p>
+            Los presentes Términos y Condiciones regulan el acceso y uso de RWAgallery.art,
+            plataforma dedicada a la exhibición, certificación y trazabilidad de obras de arte físico vinculadas a identidad criptográfica.
+            El uso del sitio implica la aceptación plena de este documento.
+        </p>
+
+        <h2>1. Objeto del Servicio</h2>
+        <p>
+            RWAgallery.art ofrece herramientas digitales para:
+        </p>
+        <ul>
+            <li>Exhibición de obras de arte físico.</li>
+            <li>Verificación de identidad criptográfica asociada a NFTs.</li>
+            <li>Trazabilidad y certificación de obras físicas.</li>
+            <li>Gestión opcional de perfiles de artistas.</li>
+        </ul>
+
+        <h2>2. Condiciones de Uso</h2>
+        <p>
+            El usuario se compromete a utilizar la plataforma de forma lícita y conforme a la legislación española y europea.
+            Queda prohibido:
+        </p>
+        <ul>
+            <li>Subir contenido ilícito, ofensivo o que infrinja derechos de terceros.</li>
+            <li>Manipular o intentar vulnerar la seguridad del sitio.</li>
+            <li>Suplantar identidad o utilizar datos falsos.</li>
+        </ul>
+
+        <h2>3. Registro y Autenticación</h2>
+        <p>
+            El usuario puede registrarse mediante Google, Apple o correo electrónico.
+            La conexión con wallets (Nova, Talisman, Subwallet, Metamask, Rabby) es opcional y no implica cesión de claves privadas.
+            RWAgallery.art nunca solicitará frases semilla ni claves privadas.
+        </p>
+
+        <h2>4. Propiedad Intelectual</h2>
+        <p>
+            Las obras, imágenes y textos pertenecen a sus autores.
+            El usuario garantiza que posee los derechos necesarios para publicar cualquier contenido que suba.
+            RWAgallery.art no adquiere derechos de explotación sobre las obras.
+        </p>
+
+        <h2>5. Criptoactivos y Cumplimiento MiCA</h2>
+        <p>
+            RWAgallery.art no emite tokens regulados ni presta servicios de custodia.
+            Los NFTs vinculados a obras físicas se consideran criptoactivos no fungibles según MiCA.
+            La plataforma actúa como intermediario tecnológico para la verificación y trazabilidad.
+        </p>
+
+        <h2>6. Limitación de Responsabilidad</h2>
+        <p>
+            RWAgallery.art no garantiza la disponibilidad permanente del servicio.
+            El usuario utiliza la plataforma bajo su propia responsabilidad.
+            No nos hacemos responsables de pérdidas derivadas del uso de wallets, redes blockchain o terceros proveedores.
+        </p>
+
+        <h2>7. Protección de Datos</h2>
+        <p>
+            El tratamiento de datos se realiza conforme al RGPD y la LOPDGDD.
+            Para más información, consulte la Política de Privacidad.
+        </p>
+
+        <h2>8. Suspensión del Servicio</h2>
+        <p>
+            RWAgallery.art podrá suspender temporal o definitivamente el acceso del usuario en caso de incumplimiento grave de estos términos.
+        </p>
+
+        <h2>9. Modificaciones</h2>
+        <p>
+            RWAgallery.art podrá actualizar estos términos para cumplir con nuevas normativas europeas o españolas.
+            La versión vigente estará siempre disponible en esta página.
+        </p>
+
+        <h2>10. Jurisdicción</h2>
+        <p>
+            Este sitio se rige por la legislación española y la normativa europea.
+            En caso de conflicto, las partes se someterán a los tribunales de España.
+        </p>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="terms-en" style="display:none;">
+
+        <h1>Terms and Conditions</h1>
+        <p>
+            These Terms and Conditions govern access to and use of RWAgallery.art,
+            a platform dedicated to the exhibition, certification and traceability of physical artworks linked to cryptographic identity.
+            Use of the site implies full acceptance of this document.
+        </p>
+
+        <h2>1. Purpose of the Service</h2>
+        <p>
+            RWAgallery.art provides digital tools for:
+        </p>
+        <ul>
+            <li>Exhibition of physical artworks.</li>
+            <li>Verification of cryptographic identity linked to NFTs.</li>
+            <li>Traceability and certification of physical artworks.</li>
+            <li>Optional artist profile management.</li>
+        </ul>
+
+        <h2>2. Conditions of Use</h2>
+        <p>
+            Users agree to use the platform lawfully and in accordance with Spanish and EU legislation.
+            It is prohibited to:
+        </p>
+        <ul>
+            <li>Upload illegal, offensive or infringing content.</li>
+            <li>Manipulate or attempt to compromise site security.</li>
+            <li>Impersonate others or use false data.</li>
+        </ul>
+
+        <h2>3. Registration and Authentication</h2>
+        <p>
+            Users may register via Google, Apple or email.
+            Wallet connections (Nova, Talisman, Subwallet, Metamask, Rabby) are optional and do not involve sharing private keys.
+            RWAgallery.art will never request seed phrases or private keys.
+        </p>
+
+        <h2>4. Intellectual Property</h2>
+        <p>
+            Artworks, images and texts belong to their authors.
+            Users guarantee they hold the necessary rights to publish any content they upload.
+            RWAgallery.art does not acquire exploitation rights over artworks.
+        </p>
+
+        <h2>5. Crypto-Assets and MiCA Compliance</h2>
+        <p>
+            RWAgallery.art does not issue regulated tokens nor provide custody services.
+            NFTs linked to physical artworks are considered non-fungible crypto-assets under MiCA.
+            The platform acts as a technological intermediary for verification and traceability.
+        </p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>
+            RWAgallery.art does not guarantee permanent service availability.
+            Users access the platform at their own risk.
+            We are not responsible for losses related to wallets, blockchain networks or third-party providers.
+        </p>
+
+        <h2>7. Data Protection</h2>
+        <p>
+            Data processing is carried out in accordance with GDPR and Spanish LOPDGDD.
+            For more information, consult the Privacy Policy.
+        </p>
+
+        <h2>8. Service Suspension</h2>
+        <p>
+            RWAgallery.art may temporarily or permanently suspend user access in case of serious breach of these terms.
+        </p>
+
+        <h2>9. Modifications</h2>
+        <p>
+            RWAgallery.art may update these terms to comply with new EU or Spanish regulations.
+            The current version will always be available on this page.
+        </p>
+
+        <h2>10. Jurisdiction</h2>
+        <p>
+            This site is governed by Spanish law and European regulations.
+            In case of dispute, parties submit to the courts of Spain.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("btn-es").addEventListener("click", () => {
+        document.getElementById("terms-es").style.display = "block";
+        document.getElementById("terms-en").style.display = "none";
+    });
+
+    document.getElementById("btn-en").addEventListener("click", () => {
+        document.getElementById("terms-es").style.display = "none";
+        document.getElementById("terms-en").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
