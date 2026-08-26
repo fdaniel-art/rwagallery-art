@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Política de Cookies</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+</div>
+
+<div id="cookies-content">
+
+    <!-- ESPAÑOL -->
+    <div id="cookies-es">
+
+        <h1>Política de Cookies</h1>
+        <p>
+            Esta Política de Cookies explica el uso de cookies y tecnologías similares en RWAgallery.art,
+            plataforma dedicada a la exhibición y trazabilidad de obras de arte físico vinculadas a identidad criptográfica.
+            Cumplimos con el Reglamento General de Protección de Datos (RGPD), la Ley Orgánica 3/2018 (LOPDGDD),
+            la Directiva ePrivacy, y la normativa europea aplicable.
+        </p>
+
+        <h2>1. ¿Qué son las cookies?</h2>
+        <p>
+            Las cookies son pequeños archivos que se almacenan en el dispositivo del usuario y permiten recordar información técnica,
+            preferencias o configuraciones necesarias para el funcionamiento del sitio.
+        </p>
+
+        <h2>2. Cookies utilizadas en RWAgallery.art</h2>
+        <p>Aplicamos estrictos principios de minimización. Utilizamos únicamente:</p>
+
+        <ul>
+            <li><strong>Cookies técnicas esenciales</strong>: necesarias para el funcionamiento básico del sitio.</li>
+            <li><strong>Cookies de idioma</strong>: para recordar si el usuario navega en español o inglés.</li>
+            <li><strong>Cookies de sesión</strong>: temporales, usadas para mantener la navegación segura.</li>
+        </ul>
+
+        <p>
+            RWAgallery.art <strong>no utiliza cookies de publicidad</strong>, <strong>no realiza perfiles</strong>,
+            y <strong>no emplea cookies de terceros</strong> salvo las estrictamente necesarias para el registro opcional
+            mediante Google o Apple (cumpliendo RGPD y ePrivacy).
+        </p>
+
+        <h2>3. Cookies relacionadas con wallets</h2>
+        <p>
+            La conexión con wallets (Nova, Talisman, Subwallet, Metamask, Rabby) no utiliza cookies propias.
+            No almacenamos claves privadas, frases semilla ni información sensible.
+        </p>
+
+        <h2>4. Gestión de cookies</h2>
+        <p>
+            El usuario puede configurar su navegador para bloquear o eliminar cookies.
+            Sin embargo, algunas funciones esenciales del sitio podrían dejar de funcionar correctamente.
+        </p>
+
+        <h2>5. Base jurídica</h2>
+        <p>
+            Las cookies esenciales se basan en el interés legítimo de garantizar el funcionamiento del sitio (art. 6.1.f RGPD).
+            Las cookies opcionales (idioma) se basan en el consentimiento del usuario (art. 6.1.a RGPD).
+        </p>
+
+        <h2>6. Actualizaciones</h2>
+        <p>
+            Esta política puede actualizarse para cumplir con nuevas normativas europeas o españolas.
+            La versión vigente estará siempre disponible en esta página.
+        </p>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="cookies-en" style="display:none;">
+
+        <h1>Cookies Policy</h1>
+        <p>
+            This Cookies Policy explains the use of cookies and similar technologies on RWAgallery.art,
+            a platform dedicated to the exhibition and traceability of physical artworks linked to cryptographic identity.
+            We comply with the GDPR, the Spanish LOPDGDD, the ePrivacy Directive, and applicable EU regulations.
+        </p>
+
+        <h2>1. What are cookies?</h2>
+        <p>
+            Cookies are small files stored on the user’s device that allow the site to remember technical information,
+            preferences or configurations necessary for proper operation.
+        </p>
+
+        <h2>2. Cookies used on RWAgallery.art</h2>
+        <p>We apply strict minimization principles. We only use:</p>
+
+        <ul>
+            <li><strong>Essential technical cookies</strong>: required for basic site functionality.</li>
+            <li><strong>Language cookies</strong>: to remember whether the user browses in Spanish or English.</li>
+            <li><strong>Session cookies</strong>: temporary cookies used to maintain secure navigation.</li>
+        </ul>
+
+        <p>
+            RWAgallery.art <strong>does not use advertising cookies</strong>, <strong>does not perform profiling</strong>,
+            and <strong>does not use third-party cookies</strong> except those strictly necessary for optional login
+            through Google or Apple (GDPR and ePrivacy compliant).
+        </p>
+
+        <h2>3. Wallet-related cookies</h2>
+        <p>
+            Wallet connections (Nova, Talisman, Subwallet, Metamask, Rabby) do not use proprietary cookies.
+            We do not store private keys, seed phrases or sensitive information.
+        </p>
+
+        <h2>4. Managing cookies</h2>
+        <p>
+            Users may configure their browser to block or delete cookies.
+            However, some essential site functions may stop working properly.
+        </p>
+
+        <h2>5. Legal basis</h2>
+        <p>
+            Essential cookies rely on the legitimate interest of ensuring site functionality (Art. 6.1.f GDPR).
+            Optional cookies (language) rely on user consent (Art. 6.1.a GDPR).
+        </p>
+
+        <h2>6. Updates</h2>
+        <p>
+            This policy may be updated to comply with new EU or Spanish regulations.
+            The current version will always be available on this page.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("btn-es").addEventListener("click", () => {
+        document.getElementById("cookies-es").style.display = "block";
+        document.getElementById("cookies-en").style.display = "none";
+    });
+
+    document.getElementById("btn-en").addEventListener("click", () => {
+        document.getElementById("cookies-es").style.display = "none";
+        document.getElementById("cookies-en").style.display = "block";
+    });
+</script>
+
+</body>
