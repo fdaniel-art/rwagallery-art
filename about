@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Sobre el Protocolo</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            background: #111118;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+</div>
+
+<div id="about-content">
+
+    <!-- ESPAÑOL -->
+    <div id="about-es">
+
+        <h1>Sobre RWAgallery.art</h1>
+        <p>
+            RWAgallery.art es un protocolo híbrido que une el arte físico con la identidad criptográfica,
+            permitiendo que una obra tangible pueda ser verificada, trazada y reclamada mediante tecnología blockchain.
+            Nuestro objetivo es crear un puente seguro, transparente y descentralizado entre artistas, coleccionistas y obras reales.
+        </p>
+
+        <div class="section">
+            <h2>Visión</h2>
+            <p>
+                Creemos en un ecosistema donde el arte físico y el digital conviven sin fricciones.
+                El NFT no es solo una imagen: es una llave criptográfica que certifica la autenticidad y propiedad de la obra física.
+                RWAgallery.art permite que esa llave tenga un propósito real.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Cómo funciona el protocolo</h2>
+            <p>
+                El protocolo se basa en tres pilares:
+            </p>
+            <ul>
+                <li><strong>Identidad criptográfica:</strong> el NFT actúa como certificado verificable.</li>
+                <li><strong>Trazabilidad:</strong> cada obra física puede vincularse a un registro blockchain.</li>
+                <li><strong>Transmutación:</strong> el coleccionista puede reclamar la obra física mediante su NFT.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Compatibilidad Web3</h2>
+            <p>
+                RWAgallery.art está preparado para integrarse con wallets de Polkadot (Nova, Talisman, Subwallet)
+                y Ethereum (Metamask, Rabby).  
+                La conexión está desactivada por diseño hasta la activación del módulo Web3.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Marco Legal</h2>
+            <p>
+                El protocolo cumple con la legislación española y europea, incluyendo RGPD, LOPDGDD, DSA, DMA y MiCA.
+                Los NFTs vinculados a obras físicas se consideran criptoactivos no fungibles según MiCA.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Objetivo del Proyecto</h2>
+            <p>
+                RWAgallery.art busca ofrecer a artistas y coleccionistas una plataforma segura, transparente y moderna,
+                donde el arte físico pueda vivir en el ecosistema Web3 sin perder su esencia.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="about-en" style="display:none;">
+
+        <h1>About RWAgallery.art</h1>
+        <p>
+            RWAgallery.art is a hybrid protocol that connects physical art with cryptographic identity,
+            allowing tangible artworks to be verified, traced and claimed through blockchain technology.
+            Our mission is to build a secure, transparent and decentralized bridge between artists, collectors and real-world artworks.
+        </p>
+
+        <div class="section">
+            <h2>Vision</h2>
+            <p>
+                We believe in an ecosystem where physical and digital art coexist seamlessly.
+                The NFT is not just an image: it is a cryptographic key that certifies authenticity and ownership of the physical artwork.
+                RWAgallery.art gives that key a real-world purpose.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>How the Protocol Works</h2>
+            <p>
+                The protocol is built on three pillars:
+            </p>
+            <ul>
+                <li><strong>Cryptographic identity:</strong> the NFT acts as a verifiable certificate.</li>
+                <li><strong>Traceability:</strong> each physical artwork can be linked to a blockchain record.</li>
+                <li><strong>Transmutation:</strong> collectors may claim the physical artwork through their NFT.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Web3 Compatibility</h2>
+            <p>
+                RWAgallery.art is prepared to integrate with Polkadot wallets (Nova, Talisman, Subwallet)
+                and Ethereum wallets (Metamask, Rabby).  
+                Wallet connection is intentionally disabled until the Web3 module is activated.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Legal Framework</h2>
+            <p>
+                The protocol complies with Spanish and European regulations, including GDPR, DSA, DMA and MiCA.
+                NFTs linked to physical artworks are considered non-fungible crypto-assets under MiCA.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Project Goal</h2>
+            <p>
+                RWAgallery.art aims to provide artists and collectors with a secure, transparent and modern platform
+                where physical art can live within the Web3 ecosystem without losing its essence.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("btn-es").addEventListener("click", () => {
+        document.getElementById("about-es").style.display = "block";
+        document.getElementById("about-en").style.display = "none";
+    });
+
+    document.getElementById("btn-en").addEventListener("click", () => {
+        document.getElementById("about-es").style.display = "none";
+        document.getElementById("about-en").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
