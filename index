@@ -76,6 +76,39 @@
             font-size: 0.8rem;
             opacity: 0.7;
         }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: #1a1a22;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            padding-bottom: 12px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item h3 {
+            margin: 12px;
+            font-size: 1rem;
+        }
+
+        .gallery-item p {
+            margin: 0 12px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
     </style>
 </head>
 
@@ -145,6 +178,17 @@
         </div>
     </div>
 
+    <!-- Galería de obras -->
+    <div class="card">
+        <h2 class="section-title" data-i18n="gallery_title">Galería de obras</h2>
+        <p data-i18n="gallery_desc">
+            Esta galería mostrará obras físicas vinculadas a identidad criptográfica. 
+            En el futuro leerá datos desde Polkadot/Ethereum.
+        </p>
+
+        <div id="gallery" class="gallery-grid"></div>
+    </div>
+
 </div>
 
 <script>
@@ -160,7 +204,9 @@
             login_desc: "Podrás acceder con cuentas tradicionales manteniendo la seguridad y la mínima recolección de datos.",
             login_google: "Acceder con Google",
             login_apple: "Acceder con Apple",
-            login_email: "Acceder con correo electrónico"
+            login_email: "Acceder con correo electrónico",
+            gallery_title: "Galería de obras",
+            gallery_desc: "Esta galería mostrará obras físicas vinculadas a identidad criptográfica. En el futuro leerá datos desde Polkadot/Ethereum."
         },
         en: {
             title: "RWA Transmutation Protocol",
@@ -173,9 +219,53 @@
             login_desc: "You will be able to log in with traditional accounts while keeping security and minimal data collection.",
             login_google: "Sign in with Google",
             login_apple: "Sign in with Apple",
-            login_email: "Sign in with email"
+            login_email: "Sign in with email",
+            gallery_title: "Artwork gallery",
+            gallery_desc: "This gallery will show physical artworks linked to cryptographic identity. In the future it will read data from Polkadot/Ethereum."
         }
     };
+
+    const artworks = [
+        {
+            id: 1,
+            title_es: "Transmutación I",
+            title_en: "Transmutation I",
+            artist: "FDaniel",
+            img: "https://picsum.photos/400/300?random=1"
+        },
+        {
+            id: 2,
+            title_es: "Materia Oscura",
+            title_en: "Dark Matter",
+            artist: "FDaniel",
+            img: "https://picsum.photos/400/300?random=2"
+        },
+        {
+            id: 3,
+            title_es: "Luz Fragmentada",
+            title_en: "Fragmented Light",
+            artist: "FDaniel",
+            img: "https://picsum.photos/400/300?random=3"
+        }
+    ];
+
+    function renderGallery(lang) {
+        const gallery = document.getElementById("gallery");
+        gallery.innerHTML = "";
+
+        artworks.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "gallery-item";
+
+            div.innerHTML = `
+                <img src="${item.img}" alt="${item.title_es}">
+                <h3>${lang === "es" ? item.title_es : item.title_en}</h3>
+                <p>${item.artist}</p>
+            `;
+
+            gallery.appendChild(div);
+        });
+    }
 
     function setLanguage(lang) {
         const dict = translations[lang];
@@ -183,6 +273,7 @@
             const key = el.getAttribute("data-i18n");
             el.textContent = dict[key];
         });
+        renderGallery(lang);
     }
 
     document.getElementById("btn-es").addEventListener("click", () => setLanguage("es"));
