@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Transmutation Protocol</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #050509;
+            color: #f5f5f5;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid #222;
+            background: #000;
+        }
+
+        .logo {
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        button.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+
+        .card {
+            background: #111118;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            margin-top: 0;
+        }
+
+        .wallets, .logins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: #1a1a22;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            padding-bottom: 12px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item h3 {
+            margin: 12px;
+            font-size: 1rem;
+        }
+
+        .gallery-item p {
+            margin: 0 12px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RWAgallery.art</div>
+
+    <div class="lang-switch">
+        <button id="btn-es">ES</button>
+        <button id="btn-en">EN</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- Introducción protocolo -->
+    <div class="card">
+        <h1 data-i18n="title">Protocolo de transmutación RWA</h1>
+        <p data-i18n="subtitle">
+            Puente entre arte físico y ecosistema Polkadot/Ethereum. Esta interfaz está preparada para evolucionar a web 3.0.
+        </p>
+    </div>
+
+    <!-- Sección wallets (desactivadas) -->
+    <div class="card">
+        <h2 class="section-title" data-i18n="wallets_title">Wallets (Polkadot & Ethereum) — desactivadas</h2>
+        <p data-i18n="wallets_desc">
+            Aquí aparecerán las conexiones reales a tus wallets. De momento solo mostramos las opciones previstas.
+        </p>
+
+        <div class="wallets">
+            <button class="disabled">
+                <span data-i18n="wallet_polkadot">Polkadot: Nova / Talisman / Subwallet</span>
+                <div class="tag">web3 (próximamente)</div>
+            </button>
+
+            <button class="disabled">
+                <span data-i18n="wallet_ethereum">Ethereum: Metamask / Rabby</span>
+                <div class="tag">web3 (próximamente)</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sección registro clásico (Google, Apple, email) -->
+    <div class="card">
+        <h2 class="section-title" data-i18n="login_title">Registro y acceso (privacidad primero)</h2>
+        <p data-i18n="login_desc">
+            Podrás acceder con cuentas tradicionales manteniendo la seguridad y la mínima recolección de datos.
+        </p>
+
+        <div class="logins">
+            <button class="disabled">
+                <span data-i18n="login_google">Acceder con Google</span>
+                <div class="tag">desactivado (diseño)</div>
+            </button>
+
+            <button class="disabled">
+                <span data-i18n="login_apple">Acceder con Apple</span>
+                <div class="tag">desactivado (diseño)</div>
+            </button>
+
+            <button class="disabled">
+                <span data-i18n="login_email">Acceder con correo electrónico</span>
+                <div class="tag">desactivado (diseño)</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Galería de obras -->
+    <div class="card">
+        <h2 class="section-title" data-i18n="gallery_title">Galería de obras</h2>
+        <p data-i18n="gallery_desc">
+            Esta galería mostrará obras físicas vinculadas a identidad criptográfica. 
+            En el futuro leerá datos desde Polkadot/Ethereum.
+        </p>
+
+        <div id="gallery" class="gallery-grid"></div>
+    </div>
+
+</div>
+
+<script>
+    const translations = {
+        es: {
+            title: "Protocolo de transmutación RWA",
+            subtitle: "Puente entre arte físico y ecosistema Polkadot/Ethereum. Esta interfaz está preparada para evolucionar a web 3.0.",
+            wallets_title: "Wallets (Polkadot & Ethereum) — desactivadas",
+            wallets_desc: "Aquí aparecerán las conexiones reales a tus wallets. De momento solo mostramos las opciones previstas.",
+            wallet_polkadot: "Polkadot: Nova / Talisman / Subwallet",
+            wallet_ethereum: "Ethereum: Metamask / Rabby",
+            login_title: "Registro y acceso (privacidad primero)",
+            login_desc: "Podrás acceder con cuentas tradicionales manteniendo la seguridad y la mínima recolección de datos.",
+            login_google: "Acceder con Google",
+            login_apple: "Acceder con Apple",
+            login_email: "Acceder con correo electrónico",
+            gallery_title: "Galería de obras",
+            gallery_desc: "Esta galería mostrará obras físicas vinculadas a identidad criptográfica. En el futuro leerá datos desde Polkadot/Ethereum."
+        },
+        en: {
+            title: "RWA Transmutation Protocol",
+            subtitle: "Bridge between physical art and the Polkadot/Ethereum ecosystem. This interface is prepared to evolve into Web 3.0.",
+            wallets_title: "Wallets (Polkadot & Ethereum) — disabled",
+            wallets_desc: "Here the real wallet connections will appear. For now we only show the planned options.",
+            wallet_polkadot: "Polkadot: Nova / Talisman / Subwallet",
+            wallet_ethereum: "Ethereum: Metamask / Rabby",
+            login_title: "Sign-in and access (privacy first)",
+            login_desc: "You will be able to log in with traditional accounts while keeping security and minimal data collection.",
+            login_google: "Sign in with Google",
+            login_apple: "Sign in with Apple",
+            login_email: "Sign in with email",
+            gallery_title: "Artwork gallery",
+            gallery_desc: "This gallery will show physical artworks linked to cryptographic identity. In the future it will read data from Polkadot/Ethereum."
+        }
+    };
+
+    const artworks = [
+        {
+            id: 1,
+            title_es: "Transmutación I",
+            title_en: "Transmutation I",
+            artist: "FDaniel",
+            img: "https://picsum.photos/400/300?random=1"
+        },
+        {
+            id: 2,
+            title_es: "Materia Oscura",
+            title_en: "Dark Matter",
+            artist: "FDaniel",
+            img: "https://picsum.photos/400/300?random=2"
+        },
+        {
+            id: 3,
+            title_es: "Luz Fragmentada",
+            title_en: "Fragmented Light",
+            artist: "FDaniel",
+            img: "https://picsum.photos/400/300?random=3"
+        }
+    ];
+
+    function renderGallery(lang) {
+        const gallery = document.getElementById("gallery");
+        gallery.innerHTML = "";
+
+        artworks.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "gallery-item";
+
+            div.innerHTML = `
+                <img src="${item.img}" alt="${item.title_es}">
+                <h3>${lang === "es" ? item.title_es : item.title_en}</h3>
+                <p>${item.artist}</p>
+            `;
+
+            gallery.appendChild(div);
+        });
+    }
+
+    function setLanguage(lang) {
+        const dict = translations[lang];
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            el.textContent = dict[key];
+        });
+        renderGallery(lang);
+    }
+
+    document.getElementById("btn-es").addEventListener("click", () => setLanguage("es"));
+    document.getElementById("btn-en").addEventListener("click", () => setLanguage("en"));
+
+    // Idioma por defecto: español
+    setLanguage("es");
+</script>
+
+</body>
+</html>
