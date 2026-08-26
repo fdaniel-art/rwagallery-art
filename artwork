@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWAgallery.art — Obra</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #14141a;
+            color: #f5f5f5;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        button.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: #111118;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .art-image {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #333;
+            object-fit: cover;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .section-title {
+            margin-top: 0;
+        }
+
+        .status-tag {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .wallets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+</div>
+
+<div id="artwork-content">
+
+    <!-- ESPAÑOL -->
+    <div id="artwork-es">
+
+        <h1 data-i18n="title_es">Transmutación I</h1>
+        <p data-i18n="subtitle_es">
+            Obra física vinculada a identidad criptográfica dentro del protocolo RWAgallery.art.
+        </p>
+
+        <div class="layout">
+
+            <!-- Columna izquierda: imagen y ficha técnica -->
+            <div>
+
+                <div class="card">
+                    <img src="https://picsum.photos/800/600?random=10" alt="Transmutación I" class="art-image">
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="artist_label_es">Artista:</span>
+                        <span data-i18n="artist_name_es">FDaniel</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="technique_label_es">Técnica:</span>
+                        <span data-i18n="technique_es">Mixta sobre soporte rígido</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="size_label_es">Medidas:</span>
+                        <span data-i18n="size_es">80 x 60 cm</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="year_label_es">Año:</span>
+                        <span data-i18n="year_es">2026</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="desc_title_es">Descripción</h2>
+                    <p data-i18n="desc_es">
+                        Pieza que explora la relación entre luz y materia en un entorno liminal,
+                        donde la presencia física de la obra se extiende hacia el espacio criptográfico.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Columna derecha: NFT, RWA y transmutación -->
+            <div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="nft_title_es">Identidad criptográfica (NFT)</h2>
+                    <p class="status-tag" data-i18n="nft_status_es">
+                        Estado: vinculación activa en entorno de pruebas (testnet).
+                    </p>
+
+                    <p>
+                        <span class="label" data-i18n="nft_id_label_es">ID del NFT:</span>
+                        <span>0xABCDEF123456</span>
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="network_label_es">Red:</span>
+                        <span data-i18n="network_es">Polkadot (preparado para expansión a Ethereum)</span>
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="hash_label_es">Hash de verificación:</span>
+                        <span>0xHASH_DE_EJEMPLO</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="rwa_title_es">Estado RWA (obra física)</h2>
+                    <p data-i18n="rwa_desc_es">
+                        La obra física se encuentra registrada en el protocolo RWAgallery.art y puede ser reclamada
+                        mediante la identidad criptográfica asociada (NFT).
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="custody_label_es">Custodia actual:</span>
+                        <span data-i18n="custody_es">Artista / estudio</span>
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="claim_status_label_es">Estado de reclamación:</span>
+                        <span data-i18n="claim_status_es">Disponible para futura transmutación</span>
+                    </p>
+
+                    <button class="disabled" style="margin-top: 10px;">
+                        <span data-i18n="claim_button_es">Reclamar obra física (desactivado)</span>
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="wallets_title_es">Wallets previstas</h2>
+                    <p data-i18n="wallets_desc_es">
+                        Estas wallets podrán utilizarse en el futuro para verificar la propiedad del NFT y activar la transmutación RWA.
+                        De momento, la conexión está desactivada.
+                    </p>
+
+                    <div class="wallets">
+                        <button class="disabled">
+                            Nova / Talisman / Subwallet
+                        </button>
+                        <button class="disabled">
+                            Metamask / Rabby
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="artwork-en" style="display:none;">
+
+        <h1 data-i18n="title_en">Transmutation I</h1>
+        <p data-i18n="subtitle_en">
+            Physical artwork linked to cryptographic identity within the RWAgallery.art protocol.
+        </p>
+
+        <div class="layout">
+
+            <!-- Left column: image and technical sheet -->
+            <div>
+
+                <div class="card">
+                    <img src="https://picsum.photos/800/600?random=10" alt="Transmutation I" class="art-image">
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="artist_label_en">Artist:</span>
+                        <span data-i18n="artist_name_en">FDaniel</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="technique_label_en">Technique:</span>
+                        <span data-i18n="technique_en">Mixed media on rigid support</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="size_label_en">Size:</span>
+                        <span data-i18n="size_en">80 x 60 cm</span>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="label" data-i18n="year_label_en">Year:</span>
+                        <span data-i18n="year_en">2026</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="desc_title_en">Description</h2>
+                    <p data-i18n="desc_en">
+                        Piece exploring the relationship between light and matter in a liminal environment,
+                        where the physical presence of the artwork extends into the cryptographic space.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Right column: NFT, RWA and transmutation -->
+            <div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="nft_title_en">Cryptographic Identity (NFT)</h2>
+                    <p class="status-tag" data-i18n="nft_status_en">
+                        Status: active linkage in testing environment (testnet).
+                    </p>
+
+                    <p>
+                        <span class="label" data-i18n="nft_id_label_en">NFT ID:</span>
+                        <span>0xABCDEF123456</span>
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="network_label_en">Network:</span>
+                        <span data-i18n="network_en">Polkadot (prepared for expansion to Ethereum)</span>
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="hash_label_en">Verification hash:</span>
+                        <span>0xHASH_EXAMPLE</span>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="rwa_title_en">RWA Status (physical artwork)</h2>
+                    <p data-i18n="rwa_desc_en">
+                        The physical artwork is registered within the RWAgallery.art protocol and may be claimed
+                        through its associated cryptographic identity (NFT).
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="custody_label_en">Current custody:</span>
+                        <span data-i18n="custody_en">Artist / studio</span>
+                    </p>
+                    <p>
+                        <span class="label" data-i18n="claim_status_label_en">Claim status:</span>
+                        <span data-i18n="claim_status_en">Available for future transmutation</span>
+                    </p>
+
+                    <button class="disabled" style="margin-top: 10px;">
+                        <span data-i18n="claim_button_en">Claim physical artwork (disabled)</span>
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title" data-i18n="wallets_title_en">Planned wallets</h2>
+                    <p data-i18n="wallets_desc_en">
+                        These wallets will be used in the future to verify NFT ownership and activate RWA transmutation.
+                        For now, connection is disabled.
+                    </p>
+
+                    <div class="wallets">
+                        <button class="disabled">
+                            Nova / Talisman / Subwallet
+                        </button>
+                        <button class="disabled">
+                            Metamask / Rabby
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("btn-es").addEventListener("click", () => {
+        document.getElementById("artwork-es").style.display = "block";
+        document.getElementById("artwork-en").style.display = "none";
+    });
+
+    document.getElementById("btn-en").addEventListener("click", () => {
+        document.getElementById("artwork-es").style.display = "none";
+        document.getElementById("artwork-en").style.display = "block";
+    });
+</script>
+
+</body>
+</html>
